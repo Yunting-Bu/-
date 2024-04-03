@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Time-Dependent Scattering Theory}{3}{0}{1}
+\beamer@sectionintoc {2}{Time-Independent Scattering Theory}{8}{0}{2}
+\beamer@sectionintoc {3}{Elastic Scattering}{18}{0}{3}
+\beamer@sectionintoc {4}{Inelastic Scattering}{34}{0}{4}

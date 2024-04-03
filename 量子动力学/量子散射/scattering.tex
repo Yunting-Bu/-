@@ -1,0 +1,902 @@
+% Inbuilt themes in beamer
+\documentclass{beamer}
+
+% Theme choice:
+\usetheme{Madrid}
+\usepackage{empheq}
+\usefonttheme[onlymath]{serif}
+% Title page details: 
+\title{Fundamental Theory of Quantum Scattering} 
+\author{Yunting-Bu}
+\date{\today}
+\logo{\large \LaTeX{}}
+
+
+\begin{document}
+	% Title page frame
+	\begin{frame}
+		\titlepage 
+	\end{frame}
+	
+	% Remove logo from the next slides
+	\logo{}
+	% Outline frame
+	\begin{frame}{Outline}
+		\tableofcontents
+	\end{frame}
+	% Lists frame
+	\section{Time-Dependent Scattering Theory}
+	\begin{frame}{Time-Dependent Scattering Theory: Moller Operator}
+		The Hamiltonian: 
+		\begin{equation}
+			H=H_0+V
+		\end{equation}
+		where $H_0$ is the "free" or asymptotic Hamiltonian and $V$ is the interaction potential that goes to zero asymptotically.\\
+		
+		Let $\Psi$ be a scattering solution of the time-dependent Schrodinger equation at $t=0$, then the solution at $t$ is:
+		\begin{equation}
+			\Psi_S(t)=\mathrm{e}^{-\mathrm{i}/\hbar Ht}\Psi
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Moller Operator}
+		We now define the wavefunction in the interaction picture by the unitary transformation
+		\begin{align}
+			\Psi_I(t)&=\mathrm{e}^{\mathrm{i}/\hbar H_0t}\Psi_S(t)\nonumber\\
+			&=\mathrm{e}^{\mathrm{i}/\hbar H_0t}\mathrm{e}^{-\mathrm{i}/\hbar Ht}\Psi
+		\end{align}
+		Using evolution operator, we get
+		\begin{equation}
+			|\Psi_I(t)\rangle=U_I(t,0)U_I(0,t_0)|\Psi_I(t_0)\rangle
+		\end{equation}
+		where
+		\begin{equation}
+			U_I(t,0)=\mathrm{e}^{\mathrm{i}/\hbar H_0t}\mathrm{e}^{-\mathrm{i}/\hbar Ht}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Moller Operator}
+		We then define the Moller operator as the limit
+		\begin{align}
+			\Omega_\pm&=\lim\limits_{t\rightarrow\mp\infty}U_I(0,t)\nonumber\\
+			&=U_I(0,\mp\infty)
+		\end{align}	
+		And define an incoming asymptote by
+		\begin{equation}
+			\Phi_{in}=\lim\limits_{t\rightarrow-\infty}U_I(t,0)\Psi
+		\end{equation}
+		so the outgoing asymptote:
+		\begin{equation}
+			\Phi_{out}=\lim\limits_{t\rightarrow\infty}U_I(t,0)\Psi
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Moller Operator}
+		Therefore the scattering state $\Psi$ can be expressed in terms of the Moller operator as
+		\begin{empheq}[box=\fbox]{equation}
+			\Psi=\Omega_+\Phi_{in}=\Omega_-\Phi_{out}
+		\end{empheq}
+		Moller operator satisfy the interwining relation:
+		\begin{empheq}[box=\fbox]{equation}
+			H\Omega_\pm=\Omega_\pm H_0
+		\end{empheq}
+		Moller operator maps each vector $\Phi$ in the Hilbert space of $H_0$ onto a unique vector $\Psi$ in the space of $H$:
+		\begin{equation}
+			|\Psi\rangle=\Omega_\pm|\Phi\rangle
+		\end{equation}
+		If we are restricted to only continuous state vectors in the Hilbert space, then the Moller operator is unitary
+		\begin{empheq}[box=\fbox]{equation}
+			\Omega\Omega^\dagger=\Omega^\dagger\Omega=I
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Operator}
+		We define the scattering matrix operator by
+		\begin{empheq}[box=\fbox]{equation}
+			S=\Omega_-^\dagger\Omega_+
+		\end{empheq}
+		$S$ commutes with the asymptotic Hamiltonian
+		\begin{equation}
+			H_0S=SH_0
+		\end{equation}
+		and $S$ is unitary
+		\begin{equation}
+			SS^\dagger=S^\dagger S=I
+		\end{equation}
+		$S$ transforms the interaction picture wavefunction from the infinite past to the infinite future
+		\begin{empheq}[box=\fbox]{equation}
+			\Psi_I(\infty)=S\Psi_I(-\infty)
+		\end{empheq}
+		or we can say
+		\begin{equation}
+			\Phi_{out}=S\Phi_{in}
+		\end{equation}
+	\end{frame}
+	\section{Time-Independent Scattering Theory}
+	\begin{frame}{Time-Independent Scattering Theory: Green's Function}
+		We now define the stationary wavefunctions $\psi^\pm$ that are energy eigenfunctions of $H$, since $\Psi$ is not the energy eigenfuctions of $H$, then
+		\begin{equation}
+			|\psi^\pm(E)\rangle=\delta(E-H)|\Psi\rangle
+		\end{equation}
+		where the + or - denotes whether the state $\psi$ is evolved from a given state in the infinite past or future
+		\begin{equation}
+			|\psi^+(E)\rangle=\Omega_+|\phi_{in}(E)\rangle
+		\end{equation}
+		where $\phi_{in}(E)$ is an eigenfunction of $H_0 $
+		\begin{equation}
+			|\phi_{in}(E)\rangle=\delta(E-H_0)|\Phi_{in}\rangle
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Green's Function}
+		$\psi^\pm(E)$ satisfies the stationary Schrofinger equation
+		\begin{equation}
+			(E-H)|\psi^\pm(E)\rangle=0
+		\end{equation}
+		as does
+		\begin{equation}
+			(E-H_0)|\phi(E)\rangle=0
+		\end{equation}
+		for both in- and outgoing free states where the subscript on $\phi$ has been dropped, thus
+		\begin{equation}
+			|\psi^\pm(E)\rangle=\Omega_+|\phi\rangle=\lim\limits_{t\rightarrow-\infty}\mathrm{e}^{-\mathrm{i}/\hbar(E-H)t}|\phi(E)\rangle
+			\label{44}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Green's Function}
+		For any function $F(t)$ which is differentiable with respect to $t$, we can always express it as the integral over its own derivative
+		\begin{equation}
+			F(\infty)=F(0)+\int_{0}^{\infty}\dfrac{\mathrm{d}F}{\mathrm{d}t}\mathrm{d}t
+		\end{equation}
+		So we can express the Moller operator as
+		\begin{equation}
+			\Omega_+=1+\dfrac{\mathrm{i}}{\hbar}\lim\limits_{\epsilon\rightarrow0}\int_0^{-\infty}\mathrm{d}t\mathrm{e}^{\epsilon t}\mathrm{e}^{\mathrm{i}/\hbar Ht}V\mathrm{e}^{-\mathrm{i}/\hbar H_0t}
+		\end{equation}
+		where a quantity $\lim\limits_{\epsilon\rightarrow0}\mathrm{exp}(\epsilon t)$ is inserted in the integrand in order to damp out the integral at $t=-\infty$.
+	\end{frame}
+	\begin{frame}{Green's Function}
+		Thus we can rewrite the scattering equation as 
+		\begin{align}
+			\Omega_+|\phi(E)\rangle&=1+\dfrac{\mathrm{i}}{\hbar}\lim\limits_{\epsilon\rightarrow0}\int_0^{-\infty}\mathrm{d}t\mathrm{e}^{\epsilon t}\mathrm{e}^{\mathrm{i}/\hbar Ht}V\mathrm{e}^{-\mathrm{i}/\hbar H_0t}|\phi(E)\rangle\nonumber\\
+			&=[1+G^+(E)V]|\phi(E)\rangle
+			\label{47}
+		\end{align}
+		The operator
+		\begin{empheq}[box=\fbox]{equation}
+			G^\pm(E)=\lim\limits_{\epsilon\rightarrow 0}(E-H\pm\mathrm{i}\epsilon)^{-1}
+		\end{empheq}
+		is the definition of the full Green's function which satisfies the equation
+		\begin{equation}
+			(E-H_0)G^\pm(E)=I
+		\end{equation}
+		A similar definition of the Green's function can be made for the asymptotic Hamiltonian $H_0$
+		\begin{equation}
+			G^\pm_0(E)=\lim\limits_{\epsilon\rightarrow 0}(E-H_0+\mathrm{i}\epsilon)^{-1}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Lippmann-Schwinger Equation}
+		By substituting Eq.\refeq{47} in Eq.\refeq{44}, we obtain the Lippmann-Schwinger equation
+		\begin{empheq}[box=\fbox]{equation}
+			|\psi^+(E)\rangle=|\phi(E)\rangle+G^+(E)V|\phi(E)\rangle
+		\end{empheq}
+		The + or - notation on the scattering wavefunction is used to distinguish different asymptotic conditions of the scattering.\\
+		We can also obtain the LS equation for the Green's function
+		\begin{empheq}[box=\fbox]{equation}
+			G^\pm=G^\pm_0+G^\pm_0VG^\pm
+		\end{empheq}
+		and therefore we obtain another form of the LS equation
+		\begin{empheq}[box=\fbox]{equation}
+			\psi^+=\phi+G^+_0V\psi^+
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{The S Matrix}
+		Using the definition for the S matrix operator, the matrix element of S operator can be written as
+		\begin{align}
+			S_{fi}(E^\prime,E)=&\langle\phi_f(E^\prime)|S|\phi_i(E)\rangle\nonumber\\
+			&=\langle\psi^-_f(E^\prime)|\psi_i^+(E)\rangle\nonumber\\
+			&=\langle\phi_f(E^\prime)|\psi^+_i(E)\rangle+\langle\phi_f(E^\prime)|V|\psi^+_i(E)\rangle\nonumber\\
+			&\quad\times(E^\prime-E+\mathrm{i}\epsilon)^{-1}
+		\end{align}
+		With the application of the LS equation again for $\psi_i^+(E)$, we obtain
+		\begin{align}
+			S_{fi}(E^\prime,E)=&\langle\phi_f(E^\prime)|\phi_i(E)\rangle+\langle\phi_f(E^\prime)|G_0^+(E)V|\psi_i^+(E)\rangle\nonumber\\
+			&\quad+\langle\phi_f(E^\prime)|V|\psi_i^+(E)\rangle(E^\prime-E+\mathrm{i}\epsilon)^{-1}\nonumber\\
+			&=\langle\phi_f(E^\prime)|\phi_i(E)\rangle+\left[ (E^\prime-E+\mathrm{i}\epsilon)^{-1}+(E-E^\prime+\mathrm{i}\epsilon)^{-1}\right] \nonumber\\
+			&\quad\times\langle\phi_f(E^\prime)|V|\psi_i^+(E)\rangle\nonumber\\
+			&=\delta(E-E^\prime)\delta_{fi}-2\pi\mathrm{i}\delta(E-E^\prime)\langle\phi_f(E)|V|\psi_i^+(E)\rangle
+		\end{align}
+	\end{frame}
+	\begin{frame}{The S Matrix}
+		So we finally arrive at an expression for the S matrix element
+		\begin{empheq}[box=\fbox]{equation}
+			S_{fi}(E^\prime,E)=\delta(E-E^\prime)\left[ \delta_{fi}-2\pi\mathrm{i}\langle\phi_f(E)|V|\psi_i^+(E)\rangle\right] 
+		\end{empheq}
+		We can also prove the normalization relation
+		\begin{align}
+			\langle\psi_f^+(E^\prime)|\psi_i^+(E)\rangle&=\langle\psi_f^-(E^\prime)|\psi_i^-(E)\rangle\nonumber\\
+			&=\langle\phi_f(E^\prime)|\phi_i(E)\rangle\nonumber\\
+			&=\delta_{fi}\delta(E-E^\prime)
+		\end{align}
+		assuming the free functions $\phi_i(E)$ are so normalized.
+	\end{frame}
+	\begin{frame}{The T and K Operators}
+		We now define a T operator by
+		\begin{equation}
+			T|\phi_i(E)\rangle=V|\psi_i^+(E)\rangle
+		\end{equation}
+		With the help of the LS equation for $\psi_i^+(E)$, it is easy to show that the T operator obeys the LS equation
+		\begin{empheq}[box=\fbox]{equation}
+			T=V+VG^+V
+		\end{empheq}
+		which can also be written as
+		\begin{equation}
+			T=V+VG_0^+T
+		\end{equation}
+		Using the definition of the T operator, the S matrix can be cast into the form
+		\begin{empheq}[box=\fbox]{equation}
+			S=1-2\pi\mathrm{i}\delta(E-H_0)T
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{The T and K Operators}
+		Another useful operator is the K operator which is hermitian and defined as
+		\begin{align}
+			K&=V+VG^pV\nonumber\\
+			&=V+VG_0^pK
+		\end{align}
+		where $G^p$ is the principal value Green's function defined as
+		\begin{equation}
+			G^p=\dfrac{P}{E-H}=G^++\mathrm{i}\pi\delta(E-H)
+		\end{equation}
+		From the definitions of the T and K operators, we can derive the relation between them
+		\begin{equation}
+			T=K[1+\mathrm{i}\pi\delta(E-H_0)K]^{-1}
+		\end{equation}
+		The S matrix operator can be expressed in terms of the K operator by
+		\begin{align}
+			S&=1-2\pi\mathrm{i}\delta(E-H_0)T\nonumber\\
+			&=1-2\pi\mathrm{i}\delta(E-H_0)K[1+\mathrm{i}\pi\delta(E-H_0)K]^{-1}\nonumber\\
+			&=[1-\mathrm{i}\pi\delta(E-H_0)K][1+\mathrm{i}\pi\delta(E-H_0)K]^{-1}
+		\end{align}
+	\end{frame}
+		\begin{frame}{On-shell S Matrix}
+		It is useful to define an on-shell S matrix $S_{fi}(E)$ by
+		\begin{equation}
+			\langle \phi_f(E^\prime)|S|\phi_i(E)\rangle=\delta(E-E^\prime)S_{fi}(E)
+		\end{equation}
+		The on-shell S matrix is a unitary matrix
+		\begin{equation}
+			\mathbf{S}^\dagger(E)\mathbf{S}=\mathbf{I}
+		\end{equation}
+		the on-shell S matrix can be written as
+		\begin{empheq}[box=\fbox]{equation}
+			S_{fi}(E)=\delta_{fi}-2\pi\mathrm{i}T_{fi}
+		\end{empheq}
+		where
+		\begin{equation}
+			T_{fi}=\langle \phi_f|T|\phi_i\rangle
+		\end{equation}
+		and
+		\begin{empheq}[box=\fbox]{equation}
+			S(E)=(1-\pi\mathrm{i}K)(1+\pi\mathrm{i}K)^{-1}
+		\end{empheq}
+		where the K matrix is given by
+		\begin{equation}
+			T_{fi}=\langle \phi_f|K|\phi_i\rangle
+		\end{equation}
+	\end{frame}
+	\section{Elastic Scattering}
+	\begin{frame}{Elastic Scattering: Radial Schrodinger Equation}
+		From a central potential $V(R)$
+		\begin{equation}
+			H=-\dfrac{\hbar^2}{2m}\dfrac{1}{r}\dfrac{\partial^2}{\partial r^2}r+\dfrac{\mathbf{L}^2}{2mr^2}+V(r)
+		\end{equation}
+		The stationary wavefunction for elastic scattering is usually represented by a partial wave expansion
+		\begin{equation}
+			\Psi^+=\sum\limits_{l=0}^\infty \mathrm{P}_l(\mathrm{cos}\theta)\dfrac{\psi_l^+(r)}{r}
+		\end{equation}
+		The radial function $\psi_l^+$ for a given energy $E$ can be shown to satisfy the radial Schrodinger equation
+		\begin{equation}
+			\dfrac{\mathrm{d}^2\psi_l^+}{\mathrm{d}r^2}+\left[ k^2-\dfrac{l(l+1)}{r^2}-\dfrac{2m}{\hbar^2}V(r)\right] \psi_l^+=0
+			\label{105}
+		\end{equation}
+		where the momentum $k$ is defined by
+		\begin{equation}
+			k^2=\dfrac{2m}{\hbar^2}E
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Free Radial Function}
+		Eq.\eqref{105} can be written in the standard form of
+		\begin{equation}
+			(E-H_{0l})\psi_l^+=V\psi_l^+
+		\end{equation}
+		where the radial Hamiltonian is defined as
+		\begin{equation}
+			H_{0l}=-\dfrac{\hbar^2}{2m}\dfrac{\mathrm{d}^2}{\mathrm{d}r^2}+\dfrac{\hbar^2}{2m}\dfrac{l(l+1)}{r^2}
+		\end{equation}
+		Thus the LS equation is
+		\begin{equation}
+			\psi_l^+=j_l+g_{0l}^+V\psi_l^+
+		\end{equation}
+		where $j_l(r)$ is the Ricatti-Bessel function satisfying the free radial equation
+		\begin{equation}
+			\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}r^2}-\dfrac{l(l+1)}{r^2}+k^2 \right]j_l(kr)=0
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Ricatti-Bessel function}
+		The Ricatti-Bessel function $j_l(z)$ is the regular solution which vanishes as $r\rightarrow0$ and has the asymptotic expansion
+		\begin{equation}
+			j_l(kr)\stackrel{r\rightarrow\infty}{\longrightarrow}\mathrm{sin}(kr-\dfrac{l\pi}{2})
+		\end{equation}
+		The normalization of the Ricatti-Bessel function is
+		\begin{equation}
+			\langle j_l(kr)|j_l(k^\prime)\rangle=\dfrac{\pi}{2}\delta(k-k^\prime)
+		\end{equation}
+		we can define the energy-normalized free radial function
+		\begin{empheq}[box=\fbox]{equation}
+			\tilde{j}_l(E)=\sqrt{\dfrac{2m}{\pi\hbar^2k}}j_l(kr)
+		\end{empheq}
+		The radial wavefuntion has the same normalization as $j_l$
+		\begin{align}
+			\langle\psi_l^+(k)|\psi_l^+(k^\prime)\rangle&=\langle j_l(k)|\Omega_+^\dagger\Omega_+|j_l(k^\prime)\rangle\nonumber\\
+			&=\langle j_l(k)|j_l(k^\prime)\rangle
+		\end{align}
+	\end{frame}
+	\begin{frame}{Radial Green's Function}
+		The radial Green's function satisfies the equation
+		\begin{equation}
+			(E-H_{0l})g_{0l}^+=I
+		\end{equation}
+		whose coordinate representation is given by
+		\begin{equation}
+			\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}r^2}-\dfrac{l(l+1)}{r^2}+k^2 \right]g_{0l}^+(r|r^\prime)=\dfrac{2m}{\hbar^2}\delta(r-r^\prime)
+		\end{equation}
+		With the regular boundary condition at the origin and the asymptotic outgoing boundary condition, we can write the solution as
+		\begin{equation}
+			g_{0l}^+(r|r^\prime)=
+			\left\{
+			\begin{aligned}
+				&j_l(kr)A(r^\prime) \quad &r<r^\prime\\
+				&h_l^+(kr)B(r^\prime) \quad &r>r^\prime\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+		where $h_l^+$ is the Ricatti-Hankel function with the outgoing spherical wave.
+	\end{frame}
+	\begin{frame}{Radial Green's Function}
+		The $h_l^\pm$ is defined as
+		\begin{equation}
+			h_l^\pm = n_l\pm\mathrm{i}j_l
+		\end{equation}
+		where $n_l$ is the Ricatti-Neumann function with the cosine asymptotic condition. Since the Ricatti-Neumann function behaves asymptotically as
+		\begin{equation}
+			n_l(kr)\stackrel{r\rightarrow\infty}{\longrightarrow}\mathrm{cos}(kr-\dfrac{l\pi}{2})
+		\end{equation}
+		the Ricatti-Hankel function has the asymptotic expansion
+		\begin{equation}
+			h_l^\pm(kr)\stackrel{r\rightarrow\infty}{\longrightarrow}\mathrm{exp}\left( kr-\dfrac{l\pi}{2}\right) 
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Radial Green's Function}
+		At the boundary of $r=r^\prime$, the two forms of the Green's function are matched by the continuity conditions
+		\begin{equation}
+			\left\{
+			\begin{aligned}
+				&j_l(kr^\prime)A(r^\prime)=h_l^+(kr^\prime)B(r^\prime)\\
+				&h_l^{+\prime}(kr^\prime)B(r^\prime)-j_l^\prime(kr^\prime)A(r^\prime)=\dfrac{2m}{\hbar^2}\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+		We then find
+		\begin{equation}
+			\left\{
+			\begin{aligned}
+				&A(r^\prime)=-\dfrac{2m}{\hbar^2}W^{-1}h_l^+(kr^\prime)=-\dfrac{2m}{\hbar^2k}h_l^+(kr^\prime)\\
+				&B(r^\prime)=-\dfrac{2m}{\hbar^2}W^{-1}j_l(kr^\prime)=-\dfrac{2m}{\hbar^2k}j_l(kr^\prime)\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+		where the Wronskian can be evaluted to be
+		\begin{equation}
+			W=j_l^\prime(kr)h_l^+(kr)-j_l(kr)h_l^{+\prime}(kr)=k
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Radial Green's Function}
+		Thus the radial Green's function can be written as
+		\begin{empheq}[box=\fbox]{equation}
+			g_{0l}^+(r|r^\prime)=-\dfrac{2m}{\hbar^2k}j_l(kr_<)h_l^+(kr_>)
+		\end{empheq}
+		where $r_<$ and $r_>$ denote, respectively, the smaller and larger of $r$ and $r^\prime$\\
+		It is often useful to define the principal value Green's function $g_{0l}^p$ by the relation
+		\begin{equation}
+			g_{0l}^+=g_{0l}^p-\mathrm{i}\pi\delta(E-H_{0l})
+		\end{equation}
+		We obtain
+		\begin{empheq}[box=\fbox]{equation}
+			g_{0l}^p(r|r^\prime)=-\dfrac{2m}{\hbar^2k}j_l(kr_<)n_l^+(kr_>)
+		\end{empheq}
+		and also the relation
+		\begin{empheq}[box=\fbox]{equation}
+			\langle r|\delta(E-H_{0l})|r^\prime\rangle=\dfrac{2m}{\pi\hbar^2k}j_l(kr)h_l^+(kr^\prime)
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Phase Shift}
+		The radial LS equation can now be written in coordinate representation as
+		\begin{align}
+			\psi_l^+(r)&=j_l(kr)+\int_0^\infty g_{0l}^+(r|r^\prime)V(r^\prime)\psi_l^+(r^\prime)\mathrm{d}r^\prime\nonumber\\
+			&=j_l(kr)-\dfrac{2m}{\hbar^2k}\int_0^\infty j_l(kr_<)h_l^+(kr_>)V(r^\prime)\psi_l^+(r^\prime)\mathrm{d}r^\prime
+		\end{align}
+		In the limit $r\rightarrow\infty$
+		\begin{align}
+			\psi_l^+(r\rightarrow\infty)&=j_l(kr)-\dfrac{2m}{\hbar^2k}h_l^+(kr)\int_0^\infty j_l(kr^\prime	)V(r^\prime)\psi_l^+(r^\prime)\mathrm{d}r^\prime\nonumber\\
+			&=j_l(kr)-T_lh_l^+(kr)
+			\label{132}
+		\end{align}
+		where the T matrix is defined by
+		\begin{empheq}[box=\fbox]{equation}
+			T_l=\dfrac{2m}{\hbar^2k}\int_0^\infty j_l(kr^\prime	)V(r^\prime)\psi_l^+(r^\prime)\mathrm{d}r^\prime
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Phase Shift}
+		Eq.\eqref{132} can also be written in terms of the incoming and outgoing waves $h_l^\pm$
+		\begin{align}
+			\psi_l^+(r\rightarrow\infty)&=j_l(kr)-T_lh_l^+(kr)\nonumber\\
+			&=(2\mathrm{i})^{-1}\left[ -h_l^-(kr)+h_l^+(kr)S_l\right] 
+		\end{align}
+		where the S matrix $S_l$ is given by
+		\begin{empheq}[box=\fbox]{equation}
+			S_l=1-2\mathrm{i}T_l
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Phase Shift}
+		Since $\psi_l^+$ is a regular solution of the radial equation, it must be a real function apart from a complex phase factor. Asymptotically we can express $\psi_l^+$ as a linear combination of two independent free radial functions
+		\begin{align}
+			\psi_l^+(r\rightarrow\infty)&=a_lj_l(kr)+b_ln_l(kr)\nonumber\\
+			&=A_l\mathrm{sin}\left( kr-\dfrac{l\pi}{2}+\delta_l\right) 
+		\end{align}
+		where $\delta_l$ is called the phase shift resulting from the potential interaction.\\
+		We can also obtain the expression for the T and S matrices
+		\begin{equation}
+			T_l=-\mathrm{sin}\delta_l\mathrm{e}^{\mathrm{i}\delta_l}
+		\end{equation}
+		and
+		\begin{empheq}[box=\fbox]{equation}
+			S_l=\mathrm{e}^{2\mathrm{i}\delta_l}
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Phase Shift}
+		We rewrite Eq.\eqref{132} in terms of the K matrix boundary condition
+		\begin{equation}
+			\psi_l^+(r\rightarrow\infty)=[j_l(kr)+n_l(kr)K_l](1-\mathrm{i}T_l)
+			\label{142}
+		\end{equation}
+		where the K matrix is related to the T or S matrices through the relations
+		\begin{empheq}[box=\fbox]{equation}
+			K_l=-\dfrac{T_l}{1-\mathrm{i}T_l}=\mathrm{i}\dfrac{1-S_l}{1+S_l}=\mathrm{tan}\delta_l
+		\end{empheq}
+		In fact we can define a real radial wavefunction
+		\begin{equation}
+			\psi_l(r)=\psi_l^+(r)(1-\mathrm{i}T_l)^{-1}
+		\end{equation}
+		which, according to Eq.\eqref{142}, will have the real asymptotic boundary condition
+		\begin{equation}
+			\psi_l(r\rightarrow\infty)=j_l(kr)+n_l(kr)K_l
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering Phase Shift}
+		Thus we can directly express the K matrix or phase shift in terms of the real integral
+		\begin{align}
+			K_l&=-\dfrac{T_l}{1-\mathrm{i}T_l}\nonumber\\
+			&=-\dfrac{2m}{\hbar^2k}\dfrac{\langle j_l|V|\psi_l^+\rangle}{1_\mathrm{i}T_l}\nonumber\\
+			&=-\dfrac{2m}{\hbar^2k}\langle j_l|V|\psi_l\rangle
+		\end{align}
+		This result can also be obtained directly if we use the principal value Green's function $G_0^p$ instead of the outgoing wave Green's function $G_0^+$ in the LS equation for the real radial wavefunction
+		\begin{equation}
+			\psi_l=j_l+g_{0l}^pV\psi_l
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		The asymptotic form of the three dimensional wavefunction can now be written as
+		\begin{equation}
+			\Psi\stackrel{r\rightarrow\infty}{\longrightarrow}\sum\limits_{l=0}^\infty\dfrac{A_l}{r}\mathrm{P}_l\mathrm{cos}\theta\mathrm{sin}(kr-\dfrac{l\pi}{2}+\delta_l)
+			\label{158}
+		\end{equation}
+		On the other hand, the physically relevant wavefunction can be expressed asymptotically as the superposition of a plane wave along z axis plus a scattered spherical wave
+		\begin{equation}
+			\Psi\rightarrow\mathrm{e}^{\mathrm{i}kz}+f(\theta)\dfrac{\mathrm{e}^{\mathrm{i}kr}}{r}
+			\label{159}
+		\end{equation}
+		The plane wave carries an incoming flux $I_i=\hbar k/m$ and the spherical wave carries an outgoing flux $I_f=v|f(\theta)|^2$
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		The plane wave $\mathrm{e}^{\mathrm{i}kz}$ can be expanded in terms of spherical waves
+		\begin{equation}
+			\mathrm{e}^{\mathrm{i}kz}\stackrel{r\rightarrow\infty}{\longrightarrow}\dfrac{1}{kr}\sum\limits_{l=0}^\infty\mathrm{i}^l(2l+1)\mathrm{P}_l(\mathrm{cos}\theta)\mathrm{sin}(kr-\dfrac{l\pi}{2})
+		\end{equation}
+		By equating the two expressions in Eq.\eqref{158} and Eq.\eqref{159}, we find
+		\begin{equation}
+			A_l=\dfrac{1}{k}(2l+1)\mathrm{i}^l\mathrm{e}^{\mathrm{i}\delta_l}
+		\end{equation}
+		and
+		\begin{empheq}[box=\fbox]{equation}
+			f(\theta)=\dfrac{1}{k}\sum\limits_{l=0}^\infty(2l+1)T_l\mathrm{P}_l(\mathrm{cos}\theta)
+		\end{empheq}
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		The experimentally measurable scattering differential cross section is defined as the outgoing flux from the spherical wave of the second term Eq.\eqref{159} divided by the incoming flux from the plane wave of the first term, viz
+		\begin{equation}
+			\mathrm{d}\sigma=\dfrac{I_f}{I_i}\mathrm{d}\Omega=|f(\theta)|^2\mathrm{d}\Omega
+		\end{equation}
+		where $\mathrm{d}\Omega$ is the solid angle. Since the wavefunction is axially symmetric, we can integrate over the azimuthal angle $\phi$ to obtain
+		\begin{equation}
+			\mathrm{d}\sigma=2\pi\mathrm{sin}\theta|f(\theta)|^2\mathrm{d}\theta
+		\end{equation}
+		for scattering angles in the range of $\theta$ to $\theta+\mathrm{d}\theta$. The integral cross section is obtained by integrating over the angle $\theta$
+		\begin{align}
+			\sigma&=\int_0^\pi2\pi\mathrm{sin}\theta|f(\theta)|^2\mathrm{d}\theta\nonumber\\
+			&=\dfrac{4\pi}{k^2}\sum\limits_{l=0}^\infty(2l+1)\mathrm{sin}^2\delta_l
+		\end{align}
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		In the low energy limit $k\rightarrow0$, only the $l=0$ term (s wave scattering) contributes to the cross section,
+		\begin{equation}
+			\sigma\simeq\dfrac{4\pi}{k^2}\mathrm{sin}^2\delta_0\simeq\dfrac{4\pi}{k^2}\delta_0^2
+		\end{equation}
+		and we can express $\sigma$ in the form
+		\begin{equation}
+			\lim\limits_{k\rightarrow0}\sigma=4\pi a^2
+		\end{equation}
+		where the quantity
+		\begin{equation}
+			a=-\lim\limits_{k\rightarrow0}\dfrac{\delta_0(k)}{k}
+		\end{equation}
+		is called the scattering length.
+	\end{frame}
+	\section{Inelastic Scattering}
+	\begin{frame}{Inelastic Scattering: Coupled Channel Equations}
+		If the scattering particle is a molecule with internal structure such as rotational and vibrational states which are changed during or after the collision, we have an inelastic scattering. \\
+		In that case, the interaction potential depends also on the internal coordinates as well and there can be energy transfer among different coordinates. In general we can satisfy the coordinates of the scattering object as internal coordinates $q$ and the scattering or radial coordinate $r$.
+	\end{frame}
+	\begin{frame}{Coupled Channel Equations}
+		The Hamiltonian of the scattering system can be generically expressed as 
+		\begin{align}
+			H&=K(r)+H_{int}(q)+V(r,q)\nonumber\\
+			&=H_0+V
+		\end{align}
+		where $K(r)$ is the kinetic energy associated with the motion of the scattering coordinate, $H_{int}(q)$ is the Hamiltonian describing the motions of all internal degrees of freedom, and $V(r,q)$ is the interaction potential that couples the motions between $r$ and $q$ coordinates.
+	\end{frame}
+	\begin{frame}{Coupled Channel Equations}
+		We can expand the scattering wavefunction $\Psi$ in terms of a complete basis set $\varphi_n(q)$ for the internal degrees of freedom
+		\begin{equation}
+			\Psi^+=\sum\limits_n\varphi_n(q)\psi_n^+(r)/r
+		\end{equation}
+		The basis functions $\varphi_n(q)$ are often chosen to be eigenfunctions of $H_{int}$ with eigenvalues $\epsilon_n$
+		\begin{equation}
+			H_{int}\varphi_n=\epsilon\varphi_n
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Coupled Channel Equations}
+		Thus, we can obtain the coupled equation for the radial wavefunction
+		\begin{equation}
+			\dfrac{\mathrm{d}^2\psi_m^+}{r^2}+\sum\limits_n\left[ k^2_m\delta_{mn}-\dfrac{2m}{\hbar^2}V_{mn}(r)\right] \psi_n^+=0
+		\end{equation}
+		or in matrix form
+		\begin{equation}
+			\left[ \mathbf{I}\dfrac{\mathrm{d}^2}{\mathrm{d}r^2}+\mathbf{k}^2-\dfrac{2m}{\hbar^2}\mathbf{V}\right] \mathbf{\Psi^+}(r)=0
+		\end{equation}
+		where
+		\begin{equation}
+			k_m^2=\dfrac{2m}{\hbar^2}(E-\epsilon_m)
+		\end{equation}
+		and the potential matrix element is defined as
+		\begin{equation}
+			V_{mn}(r)=\langle\varphi_m|V|\varphi_n\rangle
+		\end{equation}
+		We treat the $\mathbf{\Psi^+}$ as a matrix in which the $i$th column represents the scattering wavefunction from the initial $i$th state.
+	\end{frame}
+	\begin{frame}{Multichannel Green's Function}
+		In solving the LS equation
+		\begin{equation}
+			\Psi^+=\Phi+G_0^+V\Psi^+
+		\end{equation}
+		one first needs to calculate the Green's function $G_0^+$ by solving the equation
+		\begin{equation}
+			(E-H_0)G_0=I
+		\end{equation}
+		The Green's function can be expanded in channel basis functions $\varphi_n$
+		\begin{equation}
+			G_0=\sum\limits_{mn}|\varphi_m\rangle\mathbf{G}_{0mn}\langle\varphi_n|
+		\end{equation}
+		We arrive at a matrix equation for the radial Green's function
+		\begin{equation}
+			(\mathbf{E}-\mathbf{H}_0)\mathbf{G}_0=\mathbf{I}
+		\end{equation}
+		which is written in coordinate representation as
+		\begin{equation}
+			\left[ \mathbf{I}\dfrac{\mathrm{d}^2}{\mathrm{d}r^2}+\mathbf{k}^2-\dfrac{2m}{\hbar^2}\mathbf{V}_0\right] \mathbf{G}_0(r|r^\prime)=\dfrac{2m}{\hbar^2}\delta(r-r^\prime)\mathbf{I}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Multichannel Green's Function}
+		We can generalize the single-channel result to
+		\begin{equation}
+			\mathbf{G}_0(r|r^\prime)=
+			\left\{
+			\begin{aligned}
+				&\mathbf{J}(kr)\mathbf{A}(r^\prime)\quad&r<r^\prime\\
+				&\mathbf{N}(kr)\mathbf{B}(r^\prime)\quad&r>r^\prime\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+		where $\mathbf{J}$ and $\mathbf{N}$ are, the regular and irregular solutions of the equation
+		\begin{equation}
+			\left[ \mathbf{I}\dfrac{\mathrm{d}^2}{\mathrm{d}r^2}+\mathbf{k}^2-\dfrac{2m}{\hbar^2}\mathbf{V}_0\right]
+			\left\{
+			\begin{aligned}
+				&\mathbf{J}(r)\\
+				&\mathbf{N}(r)\\
+			\end{aligned}
+			\right
+			\}=\mathbf{0}
+		\end{equation}
+		Since the irregular solution $\mathbf{N}(r)$ is not unique as discussed previously for the single channel case, we need to choose a particular solution whose asymptotic boundary condition matches the type of Green's function we need.
+	\end{frame}
+	\begin{frame}{Multichannel Green's Function}
+		If we set $\mathbf{V}_0$ to be diagonal and it contains only the centrifugal potential in its diagonal elements
+		\begin{equation}
+			\mathbf{V}_0=\dfrac{l_i(l_i+1)\hbar^2}{2mr^2}\delta_{ij}
+		\end{equation}
+		then $\mathbf{J}(r)$ is diagonal and is simply the Ricatti-Bessel function
+		\begin{align}
+			\mathbf{J}_{ii}(r)&=j_{l_i}(k_ir)\nonumber\\
+			&\stackrel{r\rightarrow\infty}{\longrightarrow}\dfrac{\mathrm{sin}(k_ir-l_i\pi/2)}{\sqrt{k_i}}
+		\end{align}
+		and $\mathbf{N}(r)$ is the corresponding Ricatti-Neumann function
+		\begin{align}
+			\mathbf{N}_{ii}(r)&=n_{l_i}(k_ir)\nonumber\\
+			&\stackrel{r\rightarrow\infty}{\longrightarrow}\dfrac{\mathrm{cos}(k_ir-l_i\pi/2)}{\sqrt{k_i}}
+		\end{align}
+	\end{frame}
+	\begin{frame}{Multichannel Green's Function}
+		The coefficient matrices $\mathbf{A}$ and $\mathbf{B}$ are determined by the continuity condition at $r=r^\prime$
+		 \begin{equation}
+		 	\left\{
+		 	\begin{aligned}
+		 		&\mathbf{J}(r^\prime)\mathbf{A}(r^\prime)=\mathbf{N}(r^\prime)\mathbf{B}(r^\prime)\\
+		 		&\mathbf{N}^\prime(r^\prime)\mathbf{B}(r^\prime)-\mathbf{J}^\prime(r^\prime)\mathbf{A}(r^\prime)=\dfrac{2m}{\hbar^2}\mathbf{I}\\
+		 	\end{aligned}
+		 	\right
+		 	.
+		 \end{equation}
+		 which gives solutions for the coefficient matrices
+		 \begin{equation}
+		 	\left\{
+		 	\begin{aligned}
+		 		&\mathbf{A}(r^\prime)=-\dfrac{2m}{\hbar^2}\mathbf{W}^{-1}\mathbf{N}^T(r^\prime)\\
+		 		&\mathbf{B}(r^\prime)=-\dfrac{2m}{\hbar^2}\mathbf{W}^{-1}\mathbf{J}^T(r^\prime)\\
+		 	\end{aligned}
+		 	\right
+		 	.
+		 \end{equation}
+		 where the Wronskian is defined as
+		 \begin{equation}
+		 	\mathbf{W}=\mathbf{N}^T(r)\mathbf{J}^\prime(r)-\mathbf{N}^{\prime T}(r)\mathbf{J}(r)
+		 \end{equation}
+	\end{frame}
+	\begin{frame}{Multichannel Green's Function}
+		We can thus express the multi-channel Green's function as
+		\begin{equation}
+			\mathbf{G}_0(r|r^\prime)=
+			\left\{
+			\begin{aligned}
+				&-\dfrac{2m}{\hbar^2}\mathbf{J}(kr)\mathbf{W}^{-1}\mathbf{N}^T(kr^\prime)\quad&r<r^\prime\\
+				&-\dfrac{2m}{\hbar^2}\mathbf{N}(kr)\mathbf{W}^{-1}\mathbf{J}^T(kr^\prime)\quad&r>r^\prime\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+		It is straightforward to show that the Green's function is complex symmetric, viz
+		\begin{equation}
+			[\mathbf{G}_0]_{mn}(r|r^\prime)=[\mathbf{G}_0]_{nm}(r^\prime|r)
+		\end{equation}
+	\end{frame}
+	\begin{frame}{S, T and K Matrices}
+		The multi-channel LS equation for the radial wavefunction is given in matrix form
+		\begin{equation}
+			\mathbf{\Psi}^+=\mathbf{J}+\mathbf{G}_0^+\mathbf{V\Psi}^+
+		\end{equation}
+		or in coordinate representation
+		\begin{equation}
+			\mathbf{\Psi}^+(r)=\mathbf{J}(r)+\int_0^\infty \mathbf{G}_0^+(r|r^\prime)\mathbf{V}(r^\prime)\mathbf{\Psi}^+(r^\prime)\mathrm{d}r^\prime
+		\end{equation}
+		In the limit $r\rightarrow\infty$, we can obtain the asymptotic form of the inelastic radial wavefunction
+		\begin{align}
+			\mathbf{\Psi}^+(r\rightarrow\infty)&=\mathbf{J}(r)-\dfrac{2m}{\hbar^2}\int_0^\infty\mathbf{N}^+(r)\mathbf{J}^T(r^\prime)V(r^\prime)\mathbf{\Psi}^+(r^\prime)\mathrm{d}r^\prime\nonumber\\
+			&=\mathbf{J}(r)-\mathbf{N}^+(r)\mathbf{T}\nonumber\\
+			&=\dfrac{1}{2\mathrm{i}}[-\mathbf{N}^-(r)+\mathbf{N}^+(r)\mathbf{S}]
+		\end{align}
+	\end{frame}
+	\begin{frame}{S, T and K Matrices}
+		Where the $\mathbf{N}^\pm$ is defined as
+		\begin{equation}
+			\mathbf{N}^\pm(r)=\mathbf{N}(r)\pm\mathrm{i}\mathbf{J}(r)
+		\end{equation}
+		The S matrix is given by the relation
+		\begin{equation}
+			\mathbf{S}=\mathbf{I}-2\mathrm{i}\mathbf{T}
+		\end{equation}
+		and the T matrix is defined as
+		\begin{equation}
+			\mathbf{T}=\dfrac{2m}{\hbar^2}\langle\mathbf{J}|V|\mathbf{\Psi}^+\rangle
+		\end{equation}
+	\end{frame}
+	\begin{frame}{S, T and K Matrices}
+		It can also be written in terms of the real wavefunction $\mathbf{\Psi}(r)$
+		\begin{equation}
+			\mathbf{\Psi}(r\rightarrow\infty)=\mathbf{J}(r)+\mathbf{N}(r)\mathbf{K}
+		\end{equation}
+		Here the K matrix is given by
+		\begin{align}
+			\mathbf{K}&=-\mathbf{T}(\mathbf{I}-\mathrm{i}\mathbf{T})\nonumber\\
+			&=-\dfrac{2m}{\hbar^2}\int_0^\infty \mathbf{J}^\dagger(r)V(r)\mathbf{\Psi^+}(r)\mathrm{d}r(\mathrm{I}-\mathrm{i}\mathbf{T})^{-1}\nonumber\\
+			&=-\dfrac{2m}{\hbar^2}\langle\mathbf{J}|V|\mathbf{\Psi}\rangle
+		\end{align}
+		which is related to the S matrix by the relation
+		\begin{equation}
+			\mathbf{K}=\dfrac{\mathbf{T}}{\mathbf{I}-\mathrm{i}\mathbf{T}}=\mathrm{i}\dfrac{\mathbf{I}-\mathbf{S}}{\mathbf{I}+\mathbf{S}}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering of a Rigid Rotor}
+		The Hamiltonian for a rigid rotor is given by
+		\begin{align}
+			H&=-\dfrac{\hbar^2}{2m}\dfrac{1}{R}\dfrac{\partial^2}{\partial R^2}R+\dfrac{\mathbf{L}^2}{2mR^2}+B\mathbf{j}^2+V(R,\theta)\nonumber\\
+			&=H_0+V
+		\end{align}
+		where $B=\hbar^2/(2mr^2_0)$ and $\theta=\mathrm{cos}^{-1}(\hat{\mathbf{R}}\cdot\hat{\mathbf{r}})$. We can expand the scattering wavefuntion for a fixed total angular momentum state $JM$
+		\begin{equation}
+			\Psi^{JM}_{jL}=\sum\limits_{j^\prime L^\prime}\mathrm{Y}^{JM}_{j^\prime L^\prime}(\hat{\mathbf{R}},\hat{\mathbf{r}})\psi^{JM}_{j^\prime L^\prime,jL}(R)/R
+		\end{equation}
+		the free functions are diagonal
+		\begin{equation}
+			\left\{
+			\begin{aligned}
+				&\mathbf{J}_{j^\prime L^\prime,jL}(R)=\dfrac{j_L(k_jR)}{\sqrt{k_j}}\delta_{j^\prime j}\delta_{L^\prime L}\\
+				&\mathbf{N}^+_{j^\prime L^\prime,jL}(R)=\dfrac{h^+_L(k_jR)}{\sqrt{k_j}}\delta_{j^\prime j}\delta_{L^\prime L}\\
+			\end{aligned}
+			\right
+			.
+		\end{equation}
+	where $k_j=1/\hbar\sqrt{2m(E-Bj(j+1))}$	
+	\end{frame}
+	\begin{frame}{Scattering of a Rigid Rotor}
+		We can explicitly write out the asymptotic expression for the radial wavefunction
+		\begin{align}
+			\psi^{JM}_{j^\prime L^\prime,jL}&\stackrel{r\rightarrow\infty}{\longrightarrow}\dfrac{j_L(k_jR)}{\sqrt{k_j}}\delta_{j^\prime j}\delta_{L^\prime L}-\dfrac{h^+_L(k_{j^\prime}R)}{\sqrt{k_{j^\prime}}}T^{JM}_{j^\prime L^\prime,jL}\nonumber\\
+			&\longrightarrow\dfrac{\mathrm{sin}(k_jR-L\pi/2)}{\sqrt{k_j}}\delta_{j^\prime j}\delta_{L^\prime L}-\dfrac{\mathrm{exp}(\mathrm{i}k_{j^\prime}R-L^\prime\pi/2)}{\sqrt{k_{j^\prime}}}T^{JM}_{j^\prime L^\prime,jL}
+		\end{align}
+		The T matrix is related to the S matrix
+		\begin{equation}
+			S_{j^\prime L^\prime,jL}=\delta_{j^\prime j}\delta_{L^\prime L}-2\mathrm{i}T_{j^\prime L^\prime,jL}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		The standard inelastic scattering process for a rigid rotor is described by the asymptotic wavefunction
+		\begin{equation}
+			\Psi^+_{j_0m_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})\rightarrow\mathrm{e}^{\mathrm{i}\mathbf{k}_{j_0}\cdot\mathbf{R}}\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})+\sum\limits_{jm}f_{jm,j_0m_0}(\hat{\mathbf{R}})\dfrac{\mathrm{e}^{\mathrm{i}k_jR}}{R}\mathrm{Y}_{jm}(\hat{\mathbf{r}})
+			\label{210}
+		\end{equation}
+		By using the plane wave expansion, the first term becomes
+		\begin{align}
+			\mathrm{e}^{\mathrm{i}\mathbf{k}_{j_0}\cdot\mathbf{R}}\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})=&\sum\limits_{L_0m}\dfrac{4\pi\mathrm{i}^{L_0}}{k_{j_0}R}j_{L_0}(k_{j_0}R)\mathrm{Y}^*_{L_0m}(\hat{\mathbf{k}}_{j_0})\mathrm{Y}_{L_0m}(\hat{\mathbf{R}})\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})\nonumber\\
+			&\rightarrow\sum\limits_{L_0m}4\pi\mathrm{i}^{L_0}\dfrac{\mathrm{sin}(k_{j_0}R-L_0\pi/2)}{k_{j_0}R}\mathrm{Y}^*_{L_0m}(\hat{\mathbf{k}}_{j_0})\nonumber\\
+			&\times\mathrm{Y}_{L_0m}(\hat{\mathbf{R}})\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})
+		\end{align}
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		Using the coupled angular momentum representation, we can rewrite it as
+		\begin{align}
+			\mathrm{e}^{\mathrm{i}\mathbf{k}_{j_0}\cdot\mathbf{R}}\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})
+			&\rightarrow4\pi\sum\limits_{JML_0}\mathrm{i}^{L_0}\dfrac{\mathrm{sin}(k_{j_0}R-L_0\pi/2)}{k_{j_0}R}\langle L_0M-m_0j_0m_0|JM\rangle\nonumber\\
+			&\times\mathrm{Y}^*_{L_0M-m_0}(\hat{\mathbf{k}}_{j_0})\mathrm{Y}^{JM}_{j_0L_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})
+		\end{align}
+		where $\mathrm{Y}^{JM}_{j_0L_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})$ is the SF coupled angular momentum eigenfunction.
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		On the other hand, the asymptotic form of the scattering wavefunction $\Psi^{JM}_{j_0L_0}$ for a given initial quantum $j_0L_0$ in the space-fixed coordinate system can be expressed in terms of the T matrix boundary condition 
+		\begin{align}
+			\Psi^{JM}_{j_0L_0}&\stackrel{r\rightarrow\infty}{\longrightarrow}\mathrm{Y}^{JM}_{j_0L_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})\dfrac{\mathrm{sin}(k_{j_0}R-L_0\pi/2)}{\sqrt{k_{j_0}}R}-\sum\limits_{jL}\mathrm{Y}^{JM}_{jL}(\hat{\mathbf{R}},\hat{\mathbf{r}})\nonumber\\
+			&\times\dfrac{\mathrm{exp}(\mathrm{i}k_{j}R-L\pi/2)}{\sqrt{k_{j}}R}T^{JM}_{jL,jL}
+		\end{align}
+		We can thus express $\Psi^+_{j_0m_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})$ as a linear combination of $\Psi^{JM}_{j_0L_0}$
+		\begin{equation}
+			\Psi^+_{j_0m_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})=\sum\limits_{JML_0}A^{JML_0}_{j_0m_0}\Psi^{JM}_{j_0L_0}
+			\label{214}
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		We can obtain the expansion coefficient
+		\begin{equation}
+			A^{JML_0}_{j_0m_0}=\dfrac{4\pi\mathrm{i}^{L_0}}{\sqrt{k_{j_0}}}\mathrm{Y}^*_{L_0M-m_0}(\hat{\mathbf{k}}_{j_0})\langle L_0M-m_0j_0m_0|JM\rangle
+		\end{equation}
+		Further equating the second terms in Eqs.\eqref{210} and \eqref{214} gives rise to the expression for the scattering amplitude
+		\begin{align}
+			f_{jm,j_0m_0}(\hat{\mathbf{R}})&=-\sum\limits_{JMLL_0}\dfrac{A^{JML_0}_{j_0m_0}}{\sqrt{k_{j}}}\mathrm{i}^{-L}\langle LM-mjm|JM\rangle\mathrm{Y}_{LM-m}(\hat{\mathbf{R}})T^{JM}_{jL,j_0L_0}\nonumber\\
+			&=-\sum\limits_{JMLL_0}\dfrac{4\pi\mathrm{i}^{L_0-L}}{\sqrt{k_jk_{j_0}}}\langle LM-mjm|JM\rangle\nonumber\\
+			&\quad\times\langle JM|L_0M-m_0j_0m_0\rangle\mathrm{Y}^*_{L_0M-m_0}(\hat{\mathbf{k}}_{j_0})\nonumber\\
+			&\quad\times\mathrm{Y}_{LM-m}(\hat{\mathbf{R}})T^{JM}_{jL,j_0L_0}
+		\end{align}
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		If we choose the relative incident motion to be in the space-fixed Z direction, then $\hat{\mathbf{k}}_{j_0}=(0,0)$, and
+		\begin{equation}
+			\mathrm{Y}^*_{LM-m_0}(0,0)=\sqrt{\dfrac{2L+1}{4\pi}}\delta_{Mm_0}
+		\end{equation}
+		and we then obtain the standard expression for the scattering amplitude originally given by Arthur-Dalgarno
+		\begin{align}
+			f_{jm,j_0m_0}(\theta,\phi)=&-\sum\limits_{JLL_0}\dfrac{\sqrt{4\pi}\mathrm{i}^{L_0-L}\sqrt{2L_0+1}}{\sqrt{k_jk_{j0}}}\langle Lm_0-mjm|Jm_0\rangle\nonumber\\
+			&\times\langle Jm_0|L_00j_0m_0\rangle\mathrm{Y}_{Lm_0-m}(\hat{\mathbf{R}})T^{JM}_{jL,j_0L_0}
+			\label{218}
+		\end{align}
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		In molecular scattering, one often uses the helicity representation in which the BF $z$ axis points along the $\mathbf{R}$ direction asymptotically. From Eqs \eqref{210} and \eqref{218} we can write
+		\begin{align}
+			\sum\limits_m	f_{jm,j_0m_0}\mathrm{Y}_{jm}(\hat{\mathbf{r}})=&\sum\limits_{JLL_0}\dfrac{\sqrt{4\pi}\mathrm{i}^{L_0-L}\sqrt{2L_0+1}}{\sqrt{k_jk_{j0}}}\langle Jm_0|L_00j_0m_0\rangle\nonumber\\
+			&\times\mathrm{Y}^{Jm_0}_{jL}(\hat{\mathbf{R}},\hat{\mathbf{r}})\mathrm{Y}_{Lm_0-m}(\hat{\mathbf{R}})T^{JM}_{jL,j_0L_0}
+			\label{219}
+		\end{align}
+		Using the following relation
+		\begin{align}
+			\mathrm{Y}^{Jm_0}_{jL}(\hat{\mathbf{R}},\hat{\mathbf{r}})=&\sum\limits_m\langle Lm_0-mjm|Jm_0\rangle\sqrt{\dfrac{2L+1}{4\pi}}\nonumber\\
+			&\times D^J_{mm_0}(\phi,\theta,0)\mathrm{Y}_{jm}(\hat{\mathbf{r}}|\hat{\mathbf{R}})
+		\end{align}
+		
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		And defining the body-fixed T matrix through a unitary transformation from the SF T
+		\begin{align}
+			T^{JM}_{jm,j_0m_0}&=\sum\limits_{LL_0}\mathrm{i}^{L_0-L}\dfrac{\sqrt{(2L_0+1)(2L+1)}}{2J+1}\langle L0jm|Jm\rangle\nonumber\\
+			&=\langle Jm_0|L0j_0m_0\rangle T^{JM}_{jm,j_0m_0}
+		\end{align}
+		Eq. \eqref{219} can be rewritten in the helicity representation
+		\begin{equation}
+				\sum\limits_m	f_{jm,j_0m_0}\mathrm{Y}_{jm}(\hat{\mathbf{r}})=	\sum\limits_m	\overline{f}_{jm,j_0m_0}\mathrm{Y}_{jm}(\hat{\mathbf{r}}|\hat{\mathbf{R}})
+		\end{equation}
+		Here the scattering amplitude in the helicity representation is given by
+		\begin{equation}
+			\overline{f}_{jm,j_0m_0}(\theta,\phi)=-\dfrac{\mathrm{e}^{\mathrm{i}m\phi}}{\sqrt{k_jk_{j_0}}}\sum\limits_J(2J+1)d^J_{mm_0}(\theta)T^{JM}_{jm,j_0m_0}
+		\end{equation}
+		where $d^J_{mm_0}(\theta)$ is the reduced rotation matrix.
+	\end{frame}
+	\begin{frame}{Scattering Amplitude}
+		Thus the asymptotic form of the full scattering wavefunction for the rigid rotor can be written in the helicity representation as
+		\begin{equation}
+			\Psi^+_{j_0m_0}(\hat{\mathbf{R}},\hat{\mathbf{r}})\rightarrow\mathbf{e}^{\mathrm{i}\mathbf{k_{j_0}\cdot R}}\mathrm{Y}_{j_0m_0}(\hat{\mathbf{r}})+\sum\limits_{jm}\overline{f}_{jm,j_0m_0}(\theta)\dfrac{\mathrm{e}^{\mathrm{i}k_jR}}{R}\mathrm{Y}_{jm}(\hat{\mathbf{r}}|\hat{\mathbf{R}})
+		\end{equation}
+		where $\mathrm{Y}_{jm}(\hat{\mathbf{r}}|\hat{\mathbf{R}})$ is the angular momentum eigenfunction of the rotor in the BF frame and is given by
+		\begin{equation}
+			\mathrm{Y}_{jm}(\hat{\mathbf{r}}|\hat{\mathbf{R}})=\mathrm{Y}_{jm}(\mathrm{cos}^{-1}(\hat{\mathbf{r}}\cdot\hat{\mathbf{R}}),0)
+		\end{equation}
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		The differential cross section is given by the flux formula
+		\begin{align}
+			\dfrac{\mathrm{d}\sigma_{jm,j_0m_0}}{\mathrm{d}\Omega}&=\dfrac{v_j}{v_{j_0}}\left| \overline{f}_{jm,j_0m_0}(\theta,\phi)\right| ^2\nonumber\\
+			&=\dfrac{1}{k^2_{j_0}}\left| \sum\limits_J(2J+1)d^J_{mm_0}(\theta_R)T^J_{jm,j_0m_0}\right| ^2
+		\end{align}
+		where the superscript $M$ has been dropped because the T matrix is independent of $M$. The integral cross section is obtained by integrating over the solid angle
+		\begin{align}
+			\sigma_{jm,j_0m_0}&=\int_\Omega\mathrm{d}\sigma_{jm,j_0m_0}\nonumber\\
+			&=\dfrac{4\pi}{k^2_{j_0}}\sum\limits_J(2J+1)|T^J_{jm,j_0m_0}|^2
+		\end{align}
+		the orthogonality condition for the rotation matrix has been used.
+	\end{frame}
+	\begin{frame}{Scattering Cross Section}
+		These results can be easily extended to scattering systems more complicates than the rigid rotor by proper augmentation of the channel index.
+		For example, for rotating-vibrating atom-diatom scattering, the scattering amplitude can be obtained
+		\begin{equation}
+			\overline{f}_{\nu jm,\nu_0j_0m_0}(\theta,\phi)=-\dfrac{\mathrm{e}^{\mathrm{i}m\phi}}{\sqrt{k_{\nu j}k_{\nu_0j_0}}}\sum\limits_J(2J+1)d^J_{mm_0}(\theta_R)T^J_{\nu jm,\nu_0j_0m_0}
+		\end{equation}
+		and the integral cross section is given by
+		\begin{empheq}[box=\fbox]{equation}
+			\sigma_{\nu jm,\nu_0j_0m_0}=\dfrac{4\pi}{k^2_{\nu_0j_0}}\sum\limits_J(2J+1)|T^J_{\nu jm,\nu_0j_0m_0}|^2
+		\end{empheq}
+	\end{frame}
+\end{document} 

@@ -1,0 +1,39 @@
+\contentsline {section}{\numberline {1}谐振子模型}{2}{section.1}%
+\contentsline {subsection}{\numberline {1.1}经典力学中的谐振子}{2}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}哈密顿算符}{4}{subsection.1.2}%
+\contentsline {section}{\numberline {2}多项式方法求解本征值方程}{4}{section.2}%
+\contentsline {subsection}{\numberline {2.1}二阶线性常微分方程的级数解法}{4}{subsection.2.1}%
+\contentsline {subsubsection}{\numberline {2.1.1}二阶线性常微分方程}{4}{subsubsection.2.1.1}%
+\contentsline {subsubsection}{\numberline {2.1.2}级数解法}{5}{subsubsection.2.1.2}%
+\contentsline {subsubsection}{\numberline {2.1.3}正则奇点邻域的级数解法}{6}{subsubsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.2}级数解法求解谐振子}{7}{subsection.2.2}%
+\contentsline {subsubsection}{\numberline {2.2.1}函数与变量的变换}{7}{subsubsection.2.2.1}%
+\contentsline {subsubsection}{\numberline {2.2.2}多项式方法}{8}{subsubsection.2.2.2}%
+\contentsline {section}{\numberline {3}升降算符法}{12}{section.3}%
+\contentsline {subsection}{\numberline {3.1}符号}{12}{subsection.3.1}%
+\contentsline {subsubsection}{\numberline {3.1.1}算符$\setbox \z@ \hbox {\mathsurround \z@ $\textstyle X$}\mathaccent "0362{X}$和$\setbox \z@ \hbox {\mathsurround \z@ $\textstyle P$}\mathaccent "0362{P}$}{12}{subsubsection.3.1.1}%
+\contentsline {subsubsection}{\numberline {3.1.2}算符$a,a^\dagger $以及$N$}{12}{subsubsection.3.1.2}%
+\contentsline {subsection}{\numberline {3.2}谱的确定}{14}{subsection.3.2}%
+\contentsline {subsubsection}{\numberline {3.2.1}引理1-$N$的本征值性质}{14}{subsubsection.3.2.1}%
+\contentsline {subsubsection}{\numberline {3.2.2}引理2-矢量$a|\varphi _\nu ^i\rangle $的性质}{14}{subsubsection.3.2.2}%
+\contentsline {subsubsection}{\numberline {3.2.3}引理3-矢量$a^\dagger |\varphi _\nu ^i\rangle $的性质}{15}{subsubsection.3.2.3}%
+\contentsline {subsubsection}{\numberline {3.2.4}$N$的谱由非负整数构成}{16}{subsubsection.3.2.4}%
+\contentsline {subsubsection}{\numberline {3.2.5}本征值的简并度}{17}{subsubsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.3}哈密顿算符的本征态}{19}{subsection.3.3}%
+\contentsline {subsubsection}{\numberline {3.3.1}基矢量表为$|\varphi _0\rangle $的函数}{19}{subsubsection.3.3.1}%
+\contentsline {subsubsection}{\numberline {3.3.2}正交归一关系式和封闭性关系式}{21}{subsubsection.3.3.2}%
+\contentsline {subsubsection}{\numberline {3.3.3}各算符的作用}{21}{subsubsection.3.3.3}%
+\contentsline {subsection}{\numberline {3.4}与定态相联系的波函数}{22}{subsection.3.4}%
+\contentsline {section}{\numberline {4}各向同性的三维谐振子}{23}{section.4}%
+\contentsline {subsection}{\numberline {4.1}哈密顿算符}{23}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}直角坐标系下变量的分离}{24}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}能级的简并度}{26}{subsection.4.3}%
+\contentsline {section}{\numberline {5}二维谐振子}{27}{section.5}%
+\contentsline {subsection}{\numberline {5.1}量子化}{27}{subsection.5.1}%
+\contentsline {subsubsection}{\numberline {5.1.1}经典力学的处理}{27}{subsubsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.2}量子化处理}{27}{subsubsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.2}将定态按量子数$n_x$与$n_y$分类}{28}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}将定态按角动量分类}{30}{subsection.5.3}%
+\contentsline {subsubsection}{\numberline {5.3.1}算符$L_z$的意义及性质}{30}{subsubsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.2}右旋圆量子和左旋圆量子}{31}{subsubsection.5.3.2}%
+\contentsline {subsubsection}{\numberline {5.3.3}具有完全确定的角动量的定态}{32}{subsubsection.5.3.3}%

@@ -1,0 +1,390 @@
+\documentclass[]{article}
+\usepackage{ctex,hyperref}% 输出汉字
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+%opening
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{graphicx}% 图片插入宏包
+\usepackage{subfigure}% 并排子图
+\usepackage{float}% 浮动环境，用于调整图片位置
+\usepackage[export]{adjustbox}% 防止过宽的图片
+\usepackage{amsmath}
+\usepackage{extarrows}
+\usepackage{arydshln}
+\graphicspath{{Figures/}}%文章所用图片在当前目录下的 Figures目录
+\usepackage{hyperref} %生成引用链接
+\usepackage{cleveref} %实现图片和表格、公式的引用
+%%链接设置
+\hypersetup{colorlinks = false}
+\title{电子的自旋}
+\author{步允霆}
+
+\begin{document}
+	
+	\maketitle
+	\tableofcontents
+\section{泡利理论的基本假定}
+泡利对自旋的假定进行了详细的描述，除了轨道的变量外，我们再增添一个自旋变量，他满足下述假定：\par
+(1) 自旋算符$\boldsymbol{S}$是一个角动量算符，这就是说，他的三个分量是满足下列对易关系的观察算符：
+\begin{equation}
+	[S_x,S_y]=\mathrm{i}\hbar S_z
+\end{equation}
+还有两个公式，可以经过指标$x,y,z$的循环置换而得到。\par
+(2)自旋算符在一个新空间———自旋态空间$\mathscr{E}_s$中起作用，在此空间中$\boldsymbol{S}^2$和$S_z$构成一个CSCO。因此，$\mathscr{E}_s$空间是由$\boldsymbol{S}^2$和$S_z$的全体共同本征态$|s,m\rangle$所张成的：
+\begin{subequations}
+	\begin{equation}
+		\boldsymbol{S}^2|s,m\rangle=s(s+1)\hbar^2|s,m\rangle
+	\end{equation}
+	\begin{equation}
+		S_z|s,m\rangle=m\hbar|s,m\rangle
+	\end{equation}
+\end{subequations}
+根据角动量的普遍理论，我们知道，$s$只能为整数或半整数，而$m$则为$-s$与$s$之间的并与此两数相差整数(及零)的一切数值。一个给定的粒子由$s$的唯一的一个数值来描述，我们说这个粒子的自旋为$s$。因此，自旋态空间$\mathscr{E}_s$永远是有限的$(2s+1)$维空间，而所有的自旋态都是$\boldsymbol{S}^2$的本征矢，属于同一本征值$s(s+1)\hbar$。\par 
+(3)带研究的粒子的态空间$\mathscr{E}$是空间$\mathscr{E}_r$和空间$\mathscr{E}_s$的张量积：
+\begin{equation}
+	\mathscr{E}=\mathscr{E}_r\otimes\mathscr{E}_s
+\end{equation}
+因此，每一个自旋算符都可以和每一个轨道算符对易。由此可知，除了$s=0$的特殊情况外，只给出空间$\mathscr{E}_r$中的一个右矢(也就是说，只各出一个平方可积波函数)并不足以描述粒子的一个态；换句话说，观察算符$X,Y,Z$不能构成粒子的态空间$\mathscr{E}$中的一个CSCO，我们还必须知道粒子的自旋态，这就是说，还应给空间$\mathscr{E}_r$中的CSCO加上空间$\mathscr{E}_s$中的由自旋观察算符，例如$\boldsymbol{S}^2$和$S_z$，所构成的一个CSCO粒子的任意态是空间$\mathscr{E}_r$中的一个右矢与空间$\mathscr{E}_s$中的一个右矢的张量积右矢的线性组合。\par 
+(4)电子是自旋为$1/2(s=1/2)$的粒子，他的内禀磁矩为
+\begin{equation}
+	\boldsymbol{M}_S=2\dfrac{\mu_B}{\hbar}\boldsymbol{S}
+\end{equation}
+显然，电子的自旋态空间$\mathscr{E}_s$的维数是2.
+\section{1/2角动量的特殊性质}
+现在自旋态空间$\mathscr{E}_s$是二维的。在此空间中，我们取$\boldsymbol{S}^2$和$S_z$的共同本征矢的正交归一集合$\{|+\rangle,|-\rangle\}$作为基，这些矢量满足下列各式：
+\begin{subequations}
+	\begin{equation}
+		\boldsymbol{S}^2|\pm\rangle=\dfrac{3}{4}\hbar^2|\pm\rangle
+		\label{b1ab1a}
+	\end{equation}
+	\begin{equation}
+		S_z|\pm\rangle=\pm\dfrac{1}{2}\hbar|\pm\rangle
+		\label{b1bb1b}
+	\end{equation}
+\end{subequations}
+\begin{subequations}
+	\begin{equation}
+		\langle+|-\rangle=0
+	\end{equation}
+	\begin{equation}
+		\langle+|+\rangle=\langle-|-\rangle=1
+	\end{equation}
+\end{subequations}
+\begin{equation}
+	|+\rangle\langle+|+|-\rangle\langle-|=1
+\end{equation}
+一般的自旋态由空间$\mathscr{E}_s$中的任意矢量：
+\begin{equation}
+	|\chi\rangle=c_+|+\rangle+c_-|-\rangle
+\end{equation}
+来描述。这里的$c_+$和$c_-$都是复数。根据\eqref{b1ab1a}，空间$\mathscr{E}_s$中的所有右矢都是$\boldsymbol{S}^2$的本征矢，属于同一本征值$3\hbar^2/4$，由此可以推知，$\boldsymbol{S}^2$正比于空间$\mathscr{E}_s$中的恒等算符：
+\begin{equation}
+	\boldsymbol{S}^2=\dfrac{3}{4}\hbar^2
+\end{equation}
+
+按定义，$\boldsymbol{S}$是一个角动量，所有他具有角动量的所有普遍性质，下列算符：
+\begin{equation}
+	S_\pm=S_x\pm\mathrm{i}S_y
+\end{equation}
+作用于基$|+\rangle$和$|-\rangle$所得的结果为：
+\begin{subequations}
+	\begin{equation}
+		S_+|+\rangle=0\quad S_+|-\rangle=\hbar|+\rangle
+	\end{equation}
+	\begin{equation}
+		S_-|+\rangle=\hbar|-\rangle\quad S_-|-\rangle=0
+	\end{equation}
+	\label{b7b7}
+\end{subequations}
+在空间$\mathscr{E}_s$中起作用的一切算符，以$\{|+\rangle,|-\rangle\}$为基，都可以被表示为一个$2\times2$矩阵。根据\eqref{b1bb1b}\eqref{b7b7}，可以求得对应于$S_x,S_y,S_z$的矩阵，他们的形式如下：
+\begin{equation}
+	(\boldsymbol{S})=\dfrac{\hbar}{2}\boldsymbol{\sigma}
+	\label{b8b8}
+\end{equation}
+其中的$\boldsymbol{\sigma}$表示三个泡利矩阵
+\begin{equation}
+	\sigma_x=\begin{pmatrix}
+		0&1\\
+		1&0\\
+	\end{pmatrix}\quad \sigma_y=\begin{pmatrix}
+		0&-\mathrm{i}\\
+		\mathrm{i}&0\\
+	\end{pmatrix}\quad \sigma_z=\begin{pmatrix}
+	1&0\\
+	0&-1\\
+	\end{pmatrix}
+	\label{b9b9}
+\end{equation}
+的集合。\par 
+泡利矩阵具有下列性质，根据他们的显式\eqref{b9b9}，这些性质不是难证明的：
+\begin{subequations}
+	\begin{equation}
+		\sigma_x^2=\sigma_y^2=\sigma_z^2=1
+	\end{equation}
+	\begin{equation}
+		\sigma_x\sigma_y+\sigma_y\sigma_x=0
+	\end{equation}
+	\begin{equation}
+		[\sigma_x,\sigma_y]=2\mathrm{i}\sigma_z
+	\end{equation}
+	\begin{equation}
+		\sigma_x\sigma_y=\mathrm{i}\sigma_z
+	\end{equation}
+	\label{b10b10}
+\end{subequations}
+
+从\eqref{b9b9}还可以导出：
+\begin{subequations}
+	\begin{equation}
+		\mathrm{Tr}\sigma_x=\mathrm{Tr}\sigma_y=\mathrm{Tr}\sigma_z=0
+	\end{equation}
+	\begin{equation}
+		\mathrm{Det}\sigma_x=\mathrm{Det}\sigma_y=\mathrm{Det}\sigma_z=-1
+	\end{equation}
+\end{subequations}
+此外，任何一个$2\times2$矩阵都可以写成三个泡利矩阵和但单位矩阵的系数为复数的线性组合；其所以如此，原因很简单：一个$2\times2$矩阵只有四个元素。最后，不难证明下列恒等式
+\begin{equation}
+	(\boldsymbol{\sigma}\cdot\boldsymbol{A})(\boldsymbol{\sigma}\cdot\boldsymbol{B})=\boldsymbol{A}\cdot\boldsymbol{B}+\mathrm{i}\boldsymbol{\sigma}\cdot(\boldsymbol{A}\times\boldsymbol{B})
+\end{equation}
+其中的$\boldsymbol{A}$和$\boldsymbol{B}$是两个任意的矢量，或是两个矢量性算符，他们的三个分量可以和自旋$\boldsymbol{S}$的三个分量对易。\par 
+与电子的自旋相联系的算符除了具有得自角动量普遍理论的性质以外，还具有与$s$的(亦即$j$的)特殊值相联系的一些性质，这个特殊值是(除零以外的)最小可能值。从\eqref{b8b8}和\eqref{b10b10}可以立即导出这些特殊的性质：
+\begin{subequations}
+	\begin{equation}
+		S_x^2=S_y^2=S_z^2=\dfrac{\hbar^2}{4}
+	\end{equation}
+	\begin{equation}
+		S_xS_y+S_yS_x=0
+	\end{equation}
+	\begin{equation}
+		S_xS_y=\dfrac{\mathrm{i}}{2}\hbar S_z
+	\end{equation}
+	\begin{equation}
+		S_+^2=S_-^2=0
+	\end{equation}
+\end{subequations}
+\section{对自旋1/2的粒子的非相对论描述}
+至此，我们已经知道如何分别描述电子的外部(轨道的)自由度和内部(自旋的)自由度。在这一节中，我们要把这些不同的概念结合成一套统一的体系。
+\subsection{观察算符的态矢量}
+\subsubsection{态空间}
+当我们要考虑一个电子的所有自由度时，他的量子态应该用属于$\mathscr{E}_r$和$\mathscr{E}_s$的张量积空间$\mathscr{E}$中的一个右矢来描述。\par 
+我们将定义在空间$\mathscr{E}_r$中的算符和最初在空间$\mathscr{E}_s$中起作用的算符延伸到空间$\mathscr{E}$中去。于是，将空间$\mathscr{E}_r$中的一个CSCO和空间$\mathscr{E}_s$中的一个CSCO并列起来，我们就得到空间$\mathscr{E}$中的一个CSCO。例如，在空间$\mathscr{E}_s$中，我们取$\boldsymbol{S}^2$和$S_z$；在空间$\mathscr{E}_r$中可以取$\{X,Y,Z\}$或$\{P_x,P_y,P_z\}$，若$H$表示与中心势相联系的哈密顿算符则可以取$\{H,\boldsymbol{L}^2,L_z\}$，等等；由这些算符集合我们就可以构成空间$\mathscr{E}$中的各种CSCO：
+\begin{subequations}
+	\begin{equation}
+		\{X,Y,Z,\boldsymbol{S}^2,S_z\}
+		\label{c1ac1a}
+	\end{equation}
+	\begin{equation}
+		\{P_x,P_y,P_z,\boldsymbol{S}^2,S_z\}
+	\end{equation}
+	\begin{equation}
+		\{H,\boldsymbol{L}^2,L_z,\boldsymbol{S}^2,S_z\}
+	\end{equation}
+\end{subequations}
+等等。由于空间$\mathscr{E}$中的所有右矢都是$\boldsymbol{S}^2$的属于同一本征值的本征矢，因此，在观察算符的这些集合中，可以删去$\boldsymbol{S}^2$。\par 
+下面，我们将特别选用这些CSCO中的第一个，即\eqref{c1ac1a}。作为空间$\mathscr{E}$中的基，我们取空间$\mathscr{E}_r$中的右矢$|\boldsymbol{r}\rangle\equiv|x,y,z\rangle$与空间$\mathscr{E}_s$中的右矢$|\varepsilon\rangle$的张量积右矢
+\begin{equation}
+	|\boldsymbol{r},\varepsilon\rangle\equiv|x,y,z,\varepsilon\rangle=|\boldsymbol{r}\rangle\otimes|\varepsilon\rangle
+\end{equation}
+的集合，式中的$x,y,z$是矢量$\boldsymbol{r}$的分量，可以从$-\infty$变到$+\infty$(连续指标)，而$\varepsilon$则为+或-(离散指标)。按定义，$|\boldsymbol{r},\varepsilon\rangle$是$X,Y,Z,\boldsymbol{S}^2,S_z$的共同本征矢，即：
+\begin{align}
+	X|\boldsymbol{r},\varepsilon\rangle&=x|\boldsymbol{r},\varepsilon\rangle\nonumber\\
+	Y|\boldsymbol{r},\varepsilon\rangle&=y|\boldsymbol{r},\varepsilon\rangle\nonumber\\
+	Z|\boldsymbol{r},\varepsilon\rangle&=z|\boldsymbol{r},\varepsilon\rangle\nonumber\\
+	\boldsymbol{S}^2|\boldsymbol{r},\varepsilon\rangle&=\dfrac{3}{4}\hbar^2|\boldsymbol{r},\varepsilon\rangle\nonumber\\
+	S_z|\boldsymbol{r},\varepsilon\rangle&=\varepsilon\dfrac{\hbar}{2}|\boldsymbol{r},\varepsilon\rangle
+\end{align}
+既然$X,Y,Z,\boldsymbol{S}^2,S_z$构成一个CSCO则每一个右矢$|\boldsymbol{r},\varepsilon\rangle$，除常数因子以外，都是唯一的。由于集合$\{|\boldsymbol{r}\rangle\}$和集合$\{|+\rangle,|-\rangle\}$分别为$\mathscr{E}_r$和$\mathscr{E}_s$空间中的正交归一集，故集合$|\boldsymbol{r},\varepsilon\rangle$也是广义正交归一的：
+\begin{equation}
+	\langle \boldsymbol{r}^\prime,\varepsilon^\prime|\boldsymbol{r},\varepsilon\rangle=\delta_{\varepsilon^\prime\varepsilon}\delta(\boldsymbol{r}^\prime-\boldsymbol{r})
+\end{equation}
+这个集合还满足空间$\mathscr{E}$中的闭合性关系式：
+\begin{equation}
+	\sum\limits_{\varepsilon}\int\mathrm{d}^3r|\boldsymbol{r},\varepsilon\rangle\langle \boldsymbol{r},\varepsilon|=\int\mathrm{d}^3r|\boldsymbol{r},+\rangle\langle \boldsymbol{r},-|+\int\mathrm{d}^3r|\boldsymbol{r},-\rangle\langle \boldsymbol{r},-|=1
+	\label{c5c5}
+\end{equation}
+\subsubsection{表象$\{|\boldsymbol{r},\varepsilon\rangle\}$}
+\subsubsection{态矢量}
+空间$\mathscr{E}$中的一个任意态$|\psi\rangle$可以按照基$\{|\boldsymbol{r},\varepsilon\rangle\}$展开，为此，只需利用闭合关系式：
+\begin{equation}
+	|\psi\rangle=\sum\limits_{\varepsilon}\int\mathrm{d}^3r|\boldsymbol{r},\varepsilon\rangle\langle \boldsymbol{r},\varepsilon|\psi\rangle
+	\label{c6c6}
+\end{equation}
+因此，矢量$|\psi\rangle$在基$\{|\boldsymbol{r},\varepsilon\rangle\}$中可以用他的坐标集合来表示，也就是用下列的数来表示：
+\begin{equation}
+	\langle \boldsymbol{r},\varepsilon|\psi\rangle=\psi_{\varepsilon}(\boldsymbol{r})
+	\label{c7c7}
+\end{equation}
+这些数依赖于三个连续指标$x,y,z$和离散指标(+或-)。由此可见，要完全描述一个电子的态，必须给出空间变量$x,y,z$的两个函数：
+\begin{align}
+	\psi_+(\boldsymbol{r}&)=\langle \boldsymbol{r},+|\psi\rangle\nonumber\\
+	\psi_-(\boldsymbol{r}&)=\langle \boldsymbol{r},-|\psi\rangle
+\end{align}
+
+我们常将这两个函数写成二分量旋量$[\psi](\boldsymbol{r})$的形式：
+\begin{equation}
+	[\psi](\boldsymbol{r})=\begin{pmatrix}
+		\psi_+(\boldsymbol{r})\\
+		\psi_-(\boldsymbol{r})
+	\end{pmatrix}
+	\label{c9c9}
+\end{equation}
+
+与右矢$|\psi\rangle$相联系的左矢$\langle\psi|$，可以用\eqref{c6c6}的伴式来表示：
+\begin{equation}
+	\langle\psi|=\sum\limits_{\varepsilon}\int\mathrm{d}^3r\langle\psi|\boldsymbol{r},\varepsilon\rangle\langle \boldsymbol{r},\varepsilon|
+\end{equation}
+考虑到\eqref{c7c7}，这也就是
+\begin{equation}
+	\langle\psi|=\sum\limits_{\varepsilon}\int\mathrm{d}^3r\psi_{\varepsilon}^*(\boldsymbol{r})\langle \boldsymbol{r},\varepsilon|
+\end{equation}
+于是左矢$\langle\psi|$可以用两个函数$\psi_{+}^*(\boldsymbol{r})$和$\psi_{-}^*(\boldsymbol{r})$来表示，我们可以将他们表示为\eqref{c9c9}的伴式旋量：
+\begin{equation}
+	[\psi]^\dagger(\boldsymbol{r})=(\psi_{+}^*(\boldsymbol{r})\quad\psi_{-}^*(\boldsymbol{r}))
+\end{equation}
+两个态矢量$\langle\psi|$和$|\varphi\rangle$的标量积，根据\eqref{c5c5}，等于：
+\begin{align}
+	\langle\psi|\varphi\rangle&=\sum\limits_{\varepsilon}\int\mathrm{d}^3r\langle\psi|\boldsymbol{r},\varepsilon\rangle\langle \boldsymbol{r},\varepsilon|\varphi\rangle\nonumber\\
+	&=\int\mathrm{d}^3r[\psi^*_+(\boldsymbol{r})\varphi_+(\boldsymbol{r})+\psi_-^*(\boldsymbol{r})\varphi_-(\boldsymbol{r})]
+\end{align}
+采用旋量的符号，便可将上式写作：
+\begin{equation}
+	\langle\psi|\varphi\rangle=\int\mathrm{d}^3r[\psi]^\dagger(\boldsymbol{r})[\varphi](\boldsymbol{r} )
+\end{equation}
+这个公式非常类似于利用两个波函数来计算空间$\mathscr{E}_r$中的两个对应右矢的标量积的那个公式；但是必须注意，在此式中，遍及空间积分之前，应先作旋量$[\psi]^\dagger(\boldsymbol{r})$与$[\varphi](\boldsymbol{r} )$的矩阵乘法。特别的，矢量$|\psi\rangle$的归一化条件可表示为：
+\begin{equation}
+	\langle \psi|\psi\rangle=\int\mathrm{d}^3r[\psi]^\dagger(\boldsymbol{r})[\varphi](\boldsymbol{r} )=\int\mathrm{d}^3r[|\psi_+(\boldsymbol{r})|^2+|\psi_-(\boldsymbol{r})^2]=1
+\end{equation}
+
+在属于空间$\mathscr{E}$的矢量中，有一些矢量是空间$\mathscr{E}_r$中的一个右矢和空间$\mathscr{E}_s$中的一个右矢的张量积(例如，基矢量就属于这种情况)。如果我们所考虑的态矢量属于下列类型：
+\begin{equation}
+	|\psi\rangle=|\varphi\rangle\otimes|\chi\rangle
+\end{equation}
+其中
+\begin{align}
+	|\varphi\rangle&=\int\mathrm{d}^3r\varphi(\boldsymbol{r})|\boldsymbol{r}\rangle\in\mathscr{E}_r\nonumber\\
+	|\chi\rangle&=c_+|+\rangle+c_-|-\rangle\in\mathscr{E}_s
+\end{align}
+则与这个态矢量相联系的旋量便具有下列简单形式：
+\begin{equation}
+	[\psi](\boldsymbol{r})=\begin{pmatrix}
+		\varphi(\boldsymbol{r})c_+\\
+		\varphi(\boldsymbol{r})c_-\\
+	\end{pmatrix}=\varphi(\boldsymbol{r})\begin{pmatrix}
+	c_+\\
+	c_-\\
+	\end{pmatrix}
+\end{equation}
+实际上，在这种情况下，按照空间$\mathscr{E}$中的标量积的定义，我们应有：
+\begin{subequations}
+	\begin{equation}
+		\psi_+(\boldsymbol{r})=\langle \boldsymbol{r},+|\psi\rangle=\langle \boldsymbol{r}|\varphi\rangle\langle+|\chi\rangle=\varphi(\boldsymbol{r})c_+
+	\end{equation}
+	\begin{equation}
+		\psi_-(\boldsymbol{r})=\langle \boldsymbol{r},-|\psi\rangle=\langle \boldsymbol{r}|\varphi\rangle\langle-|\chi\rangle=\varphi(\boldsymbol{r})c_-
+	\end{equation}
+\end{subequations}
+从而，$|\psi\rangle$的模的平方由下式给出：
+\begin{equation}
+	\langle\psi|\psi\rangle=\langle\varphi|\varphi\rangle\langle\chi|\chi\rangle=(|c_+|^2+|c_-|^2)\int\mathrm{d}^3r|\varphi(\boldsymbol{r})|^2
+\end{equation}
+\subsubsection{算符}
+用$|\psi^\prime\rangle$表示线性算符$A$作用于空间$\mathscr{E}$中的右矢$|\psi\rangle$而得的右矢。根据前一段的结果，$|\psi^\prime\rangle$和$|\psi\rangle$都可以表示为具有两个分量的旋量$[\psi^\prime](\boldsymbol{r})$和$[\psi](\boldsymbol{r})$。下面我将证明，我们可以给算符$A$联系上一个$2\times2$的矩阵$\textlbrackdbl A\textrbrackdbl$，使得：
+\begin{equation}
+	[\psi^\prime](\boldsymbol{r})=\textlbrackdbl A\textrbrackdbl[\psi](\boldsymbol{r})
+\end{equation}
+而他的矩阵元在一般情况下仍然是对变量$\boldsymbol{r}$的微分算符。\par 
+(1)自旋算符$\ $这种运算最初是定义在$\mathscr{E}_s$空间中的。因此，他们只对基矢$|\boldsymbol{r},\varepsilon\rangle$起作用，他们的矩阵形式则是我们在第一章中曾经给出的形式。在这里我们只考察一个例子，例如算符$S_+$的矩阵。将这个算符作用在已按\eqref{c6c6}展开的矢量$|\psi\rangle$上，便得到如下的矢量$|\psi^\prime\rangle$：
+\begin{equation}
+	|\psi^\prime\rangle=\hbar\int\mathrm{d}^3r\varphi_-(\boldsymbol{r})|\boldsymbol{r},+\rangle
+	\label{c22c22}
+\end{equation}
+这是因为算符$S_+$作用于任何右矢$|\boldsymbol{r},+\rangle$，结果都是零，作用于右矢$|\boldsymbol{r},-\rangle$则得$\hbar|\boldsymbol{r},+\rangle$，根据\eqref{c22c22}，在基$\{|\boldsymbol{r},\varepsilon\rangle\}$中，$|\psi^\prime\rangle$的分量为：
+\begin{align}
+	\langle\boldsymbol{r},+|\psi^\prime\rangle&=\psi^\prime_+(\boldsymbol{r})=\hbar\psi_-(\boldsymbol{r})\nonumber\\
+	\langle\boldsymbol{r},-|\psi^\prime\rangle&=\psi^\prime_-(\boldsymbol{r})=0
+\end{align}
+因此，表示$|\psi^\prime\rangle$的旋量为：
+\begin{equation}
+	[\psi^\prime](\boldsymbol{r})=\hbar\begin{pmatrix}
+		\psi_-(\boldsymbol{r})\\
+		0\\
+	\end{pmatrix}
+\end{equation}
+这个结果正是用下列矩阵：
+\begin{equation}
+	\textlbrackdbl S_+\textrbrackdbl=\dfrac{\hbar}{2}(\sigma_x+\mathrm{i}\sigma_y)=\hbar\begin{pmatrix}
+		0&1\\
+		0&0\\
+	\end{pmatrix}
+\end{equation}
+与旋量$[\psi](\boldsymbol{r})$作矩阵乘法所得的结果。\par 
+(2)轨道算符$\ $与上述情况相反，这种算符总是保持基矢$|\boldsymbol{r},\varepsilon\rangle$中的指标$\varepsilon$不变；作为$2\times2$矩阵，他们总是与单位矩阵成正比。此外，他们对旋量中依赖于$\boldsymbol{r}$的函数作用全同于他们对普通波函数的作用。例如，考查右矢$|\psi^\prime\rangle=X|\psi\rangle$和右矢$|\psi^{\prime\prime}\rangle=P_x|\psi\rangle$。在基$\{|\boldsymbol{r},\varepsilon\rangle\}$中，他们的分量分别为：
+\begin{subequations}
+	\begin{equation}
+		\psi^\prime_\varepsilon(\boldsymbol{r})=\langle \boldsymbol{r},\varepsilon|X|\psi\rangle=x\psi_\varepsilon(\boldsymbol{r})
+	\end{equation}
+	\begin{equation}
+		\psi^{\prime\prime}_\varepsilon(\boldsymbol{r})=\langle\boldsymbol{r},\varepsilon|P_x|\psi\rangle=\dfrac{\hbar}{\mathrm{i}}\dfrac{\partial}{\partial x}\psi_\varepsilon(\boldsymbol{r})
+	\end{equation}
+\end{subequations}
+因此，用下面$2\times2$矩阵：
+\begin{subequations}
+	\begin{equation}
+		\textlbrackdbl X\textrbrackdbl=\begin{pmatrix}
+			x&0\\
+			0&x\\
+		\end{pmatrix}
+	\end{equation}
+	\begin{equation}
+		\textlbrackdbl P_x\textrbrackdbl=\dfrac{\hbar}{\mathrm{i}}\begin{pmatrix}
+			\dfrac{\partial}{\partial x}&0\\
+			0&\dfrac{\partial}{\partial x}\\
+		\end{pmatrix}
+	\end{equation}
+\end{subequations}
+便可以从旋量$[\psi(\boldsymbol{r})]$得到旋量$[\psi^\prime](\boldsymbol{r})$和$[\psi^{\prime\prime}](\boldsymbol{r})$。\par 
+(3)混合算符$\ $在空间$\mathscr{E}$中起作用的最普遍的算符，若用矩阵来表示，就是一个$2\times2$矩阵，他的元素是对变量$\boldsymbol{r}$求导的微分算符，例如：
+\begin{equation}
+	\textlbrackdbl L_z,S_z\textrbrackdbl=\dfrac{\hbar}{2}\begin{pmatrix}
+		\dfrac{\hbar}{\mathrm{i}}\dfrac{\partial}{\partial\varphi}&0\\
+		0&-\dfrac{\hbar}{\mathrm{i}}\dfrac{\partial}{\partial\varphi}\\
+	\end{pmatrix}
+\end{equation}
+或
+\begin{equation}
+	\textlbrackdbl\boldsymbol{S}\cdot\boldsymbol{P}\textrbrackdbl=\dfrac{\hbar}{2}(\sigma_xP_x+\sigma_yP_y+\sigma_zP_z)=\dfrac{\hbar^2}{2\mathrm{i}}\begin{pmatrix}
+		\dfrac{\partial}{\partial z}&\dfrac{\partial}{\partial x}-\mathrm{i}\dfrac{\partial}{\partial y}\\
+		\dfrac{\partial}{\partial x}+\mathrm{i}\dfrac{\partial}{\partial y}&-\dfrac{\partial}{\partial z}\\
+	\end{pmatrix}
+\end{equation}
+附注：\par 
+(i)旋量表象$\{|\boldsymbol{r},\varepsilon\rangle\}$类似于空间$\mathscr{E}_r$中的$\{|\boldsymbol{r}\rangle\}$表象；空间$\mathscr{E}$中的一个任意算符$A$的矩阵元$\langle\psi|A|\varphi\rangle$由下列公式给出：
+\begin{equation}
+	\langle\psi|A|\varphi\rangle=\int\mathrm{d}^3r[\psi]^\dagger(\boldsymbol{r})\textlbrackdbl A\textrbrackdbl[\varphi](\boldsymbol{r})
+\end{equation}
+其中的$\textlbrackdbl A\textrbrackdbl$是表示算符$A$的$2\times2$矩阵(我们应先作矩阵乘法，再对全空间积分)。只有当这种表象可以简化推理和计算时，我们才使用他；正如在空间$\mathscr{E}_r$中那样，我们应尽可能使用矢量和算符本身。\par 
+(ii)显然，还有一种$\{|\boldsymbol{p},\varepsilon\rangle\}$表象，他的基矢是$\{P_x,P_y,P_z,\boldsymbol{S}^2,S_z\}$。这个CSCO的共同本征矢。空间$\mathscr{E}$中的标量积的定义给出：
+\begin{equation}
+	\langle\boldsymbol{r},\varepsilon|\boldsymbol{p},\varepsilon^\prime\rangle=\langle\boldsymbol{r}|\boldsymbol{p}\rangle\langle\varepsilon|\varepsilon^\prime\rangle=\dfrac{1}{(2\pi\hbar)^{3/2}}\mathrm{e}^{\mathrm{i}\boldsymbol{p}\cdot\boldsymbol{r}/\hbar}\delta_{\varepsilon\varepsilon^\prime}
+	\label{c31c31}
+\end{equation}
+在$\{|\boldsymbol{p},\varepsilon\rangle\}$表象中，我们给$\mathscr{E}$空间中的每一个矢量$|\psi\rangle$联系上一个具有二分量的旋量：
+\begin{equation}
+	[\overline{\psi}](\boldsymbol{p})=\begin{pmatrix}
+		\overline{\psi}_+(\boldsymbol{p})\\
+		\overline{\psi}_-(\boldsymbol{p})\\
+	\end{pmatrix}
+\end{equation}
+其中
+\begin{align}
+	\overline{\psi}_+(\boldsymbol{p})&=\langle\boldsymbol{p},+|\psi\rangle\nonumber\\
+	\overline{\psi}_-(\boldsymbol{p})&=\langle\boldsymbol{p},-|\psi\rangle
+\end{align}
+根据\eqref{c31c31}，$\overline{\psi}_+(\boldsymbol{p})$和$\overline{\psi}_-(\boldsymbol{p})$就是$\psi_+(\boldsymbol{r})$和$\psi_-(\boldsymbol{r})$的傅里叶变换：
+\begin{align}
+	\overline{\psi}_\varepsilon(\boldsymbol{p})&=\langle\boldsymbol{p},\varepsilon|\psi\rangle=\sum\limits_{\varepsilon^\prime}\int\mathrm{d}^3r\langle\boldsymbol{p},\varepsilon|\boldsymbol{r},\varepsilon^\prime\rangle\langle \boldsymbol{r},\varepsilon^\prime|\psi\rangle\nonumber\\
+	&=\dfrac{1}{(2\pi\hbar)^{3/2}}\int\mathrm{d}^3r\mathrm{e}^{-\mathrm{i}\boldsymbol{p}\cdot\boldsymbol{r}/\hbar}\psi_\varepsilon(\boldsymbol{r})
+\end{align}
+\end{document}

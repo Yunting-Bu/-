@@ -1,0 +1,1111 @@
+\documentclass[]{article}
+\usepackage{ctex,hyperref}% 输出汉字
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{amsthm,amsmath,amssymb}
+\usepackage{mathrsfs}
+%opening
+\usepackage{setspace}
+\usepackage{lipsum}
+\usepackage{graphicx}% 图片插入宏包
+\usepackage{subfigure}% 并排子图
+\usepackage{float}% 浮动环境，用于调整图片位置
+\usepackage[export]{adjustbox}% 防止过宽的图片
+\usepackage{amsmath}
+\usepackage{extarrows}
+\graphicspath{{Figures/}}%文章所用图片在当前目录下的 Figures目录
+\usepackage{hyperref} %生成引用链接
+\usepackage{cleveref} %实现图片和表格、公式的引用
+%%链接设置
+\hypersetup{colorlinks = false}
+\title{谐振子}
+\author{步允霆}
+
+\begin{document}
+	
+	\maketitle
+\tableofcontents
+\section{谐振子模型}
+\subsection{经典力学中的谐振子}
+一维谐振子在下述的势场中
+\begin{equation}
+	V(x)=\dfrac{1}{2}kx^2
+\end{equation}
+粒子受到的恢复力为：
+\begin{equation}
+	F_x=-\dfrac{\mathrm{d}V}{\mathrm{d}x}=-kx
+\end{equation}
+在经典力学中，此粒子的运动在$Ox$轴上的投影是围绕着点$x=0$的正弦型振荡，其角频率为
+\begin{equation}
+	\omega=\sqrt{\dfrac{k}{m}}
+\end{equation}
+粒子遵从如下的运动方程
+\begin{equation}
+	m\dfrac{\mathrm{d}^2x}{\mathrm{d}t^2}=-\dfrac{\mathrm{d}V}{\mathrm{d}x}=-kx
+\end{equation}
+这个方程的通解具有如下形式
+\begin{equation}
+	x=x_M\mathrm{cos}(\omega t-\varphi)
+	\label{cos}
+\end{equation}
+粒子的总能量为
+\begin{equation}
+	E=T+V=\dfrac{p^2}{2m}+\dfrac{1}{2}m\omega^2x^2
+\end{equation}
+将\eqref{cos}带入上式子得
+\begin{equation}
+	E=\dfrac{1}{2}m\omega^2x_M^2
+\end{equation}
+由此可见，粒子的能量与时间无关，且由于$x_M$可以取任意值，故能量可以为任意正数或零。\par 
+现在考虑任意的势$V(x)$，他的极小值位于$x=x_0$。将函数$V(x)$在点$x_0$附近展开
+\begin{equation}
+	V(x)=a+b(x-x_0)^2+c(x-x_0)^3+\cdots
+\end{equation}
+展开系数为
+\begin{align}
+	a&=V(x_0)\nonumber\\
+	b&=\dfrac{1}{2}\left(\dfrac{\mathrm{d}^2V}{\mathrm{d}x^2} \right) _{x=x_0}\nonumber\\
+	c&=\dfrac{1}{3!}\left(\dfrac{\mathrm{d}^3V}{\mathrm{d}x^3} \right) _{x=x_0}
+\end{align}
+
+如果粒子在$x_0$附近运动的振幅足够小，以致$(x-x_0)^3$与前面相较可以忽略，那么我们处理的就是一个谐振子问题了，此时动力学方程近似为
+\begin{equation}
+	F_x=-\dfrac{\mathrm{d}V}{\mathrm{d}x}\simeq-2b(x-x_0)
+\end{equation}
+其角频率$\omega$与$V(x)$的二阶导数在$x=x_0$处的值有关：
+\begin{equation}
+	\omega=\sqrt{\dfrac{2b}{m}}=\sqrt{\dfrac{1}{m}\left(\dfrac{\mathrm{d}^2V}{\mathrm{d}x^2} \right) _{x=x_0}}
+\end{equation}
+由于运动的振幅很小，故谐振子的能量将会很小。
+\subsection{哈密顿算符}
+在量子力学中，根据量子化规则，用$X$与$P$算符代替$x$与$p$，他们满足关系：
+\begin{equation}
+	[X,P]=\mathrm{i}\hbar 
+	\label{XP-PX}
+\end{equation}
+于是我们很容易得到体系的哈密顿算符：
+\begin{equation}
+	H=\dfrac{P^2}{2m}+\dfrac{1}{2}m\omega^2X^2
+\end{equation}
+
+由于$H$与时间无关，对谐振子的量子研究归结于求本征方程：
+\begin{equation}
+	H|\varphi\rangle=E|\varphi\rangle
+\end{equation}
+在${|x\rangle}$表象中，可以写为：
+\begin{equation}
+	\left[ -\dfrac{\hbar^2}{2m}\dfrac{\mathrm{d}^2}{\mathrm{d}x^2}+\dfrac{1}{2}m\omega^2x^2\right] \varphi(x)=E\varphi(x)
+	\label{eigeneq}
+\end{equation}
+\section{多项式方法求解本征值方程}
+\subsection{二阶线性常微分方程的级数解法}
+\subsubsection{二阶线性常微分方程}
+形式为：
+\begin{equation}
+	y^{\prime\prime}+P(x)y^{\prime}+Q(x)y=0
+	\label{eqdiff2}
+\end{equation}
+假设\eqref{eqdiff2}的解可在$x_0$的邻域进行泰勒展开：
+\begin{equation}
+	y=a_0+a_1(x-x_0)+a_2(x-x_0)^2+a_3(x-x_0)^3+\cdots
+\end{equation}
+系数为
+\begin{align}
+	a_0&=y_{(x=x_0)}\nonumber\\
+	a_1&=y^{\prime}_{(x=x_0)}\nonumber\\
+	a_2&=\dfrac{1}{2}y^{\prime\prime}_{(x=x_0)}\nonumber\\
+	a_3&=\dfrac{1}{3!}y^{\prime\prime\prime}_{(x=x_0)}
+\end{align}
+如果$a_0,a_1$已知，则由\eqref{eqdiff2}
+\begin{equation}
+	y^{\prime\prime}_{(x=x_0)}=[-P(x)y^{\prime}-Q(x)y]_{(x=x_0)}
+\end{equation}
+故之后的系数也可以求得。
+\subsubsection{级数解法}
+如果方程\eqref{eqdiff2}可以写成如下形式：
+\begin{equation}
+	P(x)y^{\prime\prime}+Q(x)y^{\prime}+R(x)y=0
+	\label{eqdiff2rig}
+\end{equation}
+展开$y$
+\begin{equation}
+	y=\sum\limits_{k=0}^{\infty}a_kx^k
+	\label{taylor1}
+\end{equation}
+则
+\begin{equation}
+	y^{\prime}=\sum\limits_{k=0}^{\infty}a_k kx^{k-1}
+	\label{taylor2}
+\end{equation}
+\begin{equation}
+	y^{\prime\prime}=\sum\limits_{k=0}^{\infty}a_k k(k-1)x^{k-2}
+	\label{taylor3}
+\end{equation}
+将\eqref{taylor1}\eqref{taylor2}\eqref{taylor3}带入\eqref{eqdiff2rig}，则得包含$x$的各幂次的恒等式，每一幂次的系数都必须等于零。由$x^k$的系数为零，可得
+\begin{equation}
+	a_k=c_1a_{k-1}+c_2a_{k-2}+\cdots+c_{k-1}a_{1}+c_ka_0
+	\label{recursion}
+\end{equation}
+式\eqref{recursion}称为递推公式。\par 
+为了比较$x^k$项的系数，我们可以将\eqref{taylor2}\eqref{taylor3}变换成$x^k$项的加和。由\eqref{taylor2}得
+\begin{equation}
+	y^{\prime}=\sum\limits_{k=0}^{\infty}a_k kx^{k-1}=\sum\limits_{k=1}^{\infty}a_k kx^{k-1}
+\end{equation}
+令$k^\prime=k-1$，则$k=k^\prime+1$，于是
+\begin{equation}
+	y^{\prime}=\sum\limits_{k^\prime=0}^{\infty}a_{k^\prime+1} (k^\prime+1)x^{k^\prime}
+\end{equation}
+将傀标$k^\prime$换为$k$，则
+\begin{equation}
+	y^{\prime}=\sum\limits_{k=0}^{\infty}a_{k+1} (k+1)x^{k}
+\end{equation}
+同样，\eqref{taylor3}可以写为
+\begin{equation}
+	y^{\prime\prime}=\sum\limits_{k=0}^{\infty}a_{k+2} (k+1)(k+2)x^{k}
+\end{equation}
+\subsubsection{正则奇点邻域的级数解法}
+如果微分方程可以写成如下形式
+\begin{equation}
+	x^2y^{\prime\prime}+xP(x)y^{\prime}+Q(x)y=0
+	\label{eqdiff2s}
+\end{equation}
+当$x=0$，$P(x)$与$Q(x)$是有限的，那么$x=0$就是方程的正则奇点。可以用如下的级数展开
+\begin{align}
+	y&=x^L\sum\limits_{k=0}^{\infty}a_kx^k\nonumber\\
+	y^{\prime}&=x^L\sum\limits_{k=0}^{\infty}a_k (L+k)x^{k-1}\nonumber\\
+	y^{\prime\prime}&=x^L\sum\limits_{k=0}^{\infty}a_k (L+k)(L+k-1)x^{k-2}
+\end{align}
+带入\eqref{eqdiff2s}即可。
+\subsection{级数解法求解谐振子}
+\subsubsection{函数与变量的变换}
+由\eqref{eigeneq}，我们引入无量纲算符
+\begin{align}
+	\widehat{X}&=\beta X\nonumber\\
+	\widehat{P}&=\dfrac{P}{\beta\hbar}
+\end{align}
+参量$\beta$是具有长度的倒数的量纲，定义为
+\begin{equation}
+	\beta=\sqrt{\dfrac{m\omega}{\hbar}}
+\end{equation}
+引用$|\xi_{\widehat{x}}\rangle$表示$\widehat{X}$的属于本征值$\widehat{x}$的本征矢：
+\begin{equation}
+	\widehat{X}|\xi_{\widehat{x}}\rangle=\widehat{x}|\xi_{\widehat{x}}\rangle
+\end{equation}
+正交归一关系式与封闭性关系式可以写作：
+\begin{equation}
+	\left\langle \xi_{\widehat{x}}|\xi_{\widehat{x^\prime}}\right\rangle =\delta(\widehat{x}-\widehat{x^\prime})
+\end{equation}
+\begin{equation}
+	\int^{+\infty}_{-\infty}\mathrm{d}\widehat{x}|\xi_{\widehat{x}}\rangle\langle\xi_{\widehat{x}}|=1
+	\label{666}
+\end{equation}
+右矢$|\xi_{\widehat{x}}\rangle$显然是算符$X$的属于本征值$\widehat{x}/\beta $的本征矢，当：
+\begin{equation}
+	\widehat{x}=\beta x
+	\label{777}
+\end{equation}
+时，右矢$|x\rangle$便与右矢$|\xi_{\widehat{x}}\rangle$成比例。但二者并不相等。实际上，关于右矢$|x\rangle$的封闭性关系式为：
+\begin{equation}
+	\int^{+\infty}_{-\infty}\mathrm{d}x|x\rangle\langle x|=1
+\end{equation}
+如果在这个积分中按\eqref{777}进行变量代换，我们便得到
+\begin{equation}
+	\int^{+\infty}_{-\infty}\dfrac{\mathrm{d}\widehat{x}}{\beta}|\widehat{x}=\beta x\rangle\langle \widehat{x}=\beta x|=1
+\end{equation}
+与\eqref{666}比较可以看出，例如，我们可以令
+\begin{equation}
+	|\widehat{x}=\beta x\rangle=\sqrt{\beta}|\xi_{\widehat{x}}\rangle
+\end{equation}
+便可以使右矢$|\xi_{\widehat{x}}\rangle$作为$\widehat{x}$的函数是正交归一化的，因为右矢$|x\rangle$作为$x$的函数是正交归一化的。\par 
+用$|\varphi\rangle$表示任意右矢，则
+\begin{equation}
+	\widehat{\varphi}(\widehat{x})=\langle\xi_{\widehat{x}}|\varphi\rangle=\dfrac{1}{\sqrt{\beta}}\langle x=\widehat{x}/\beta|\varphi\rangle
+\end{equation}
+也就是说
+\begin{equation}
+	\widehat{\varphi}(\widehat{x})=\dfrac{1}{\sqrt{\beta}}\varphi(x=\widehat{x}/\beta)
+	\label{1212}
+\end{equation}
+于是\eqref{eigeneq}可以改写为
+\begin{equation}
+	\dfrac{1}{2}\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}+\widehat{x}^2\right] \widehat{\varphi}(\widehat{x})=\varepsilon\widehat{\varphi}(\widehat{x})
+	\label{eigeneq15}
+\end{equation}
+其中
+\begin{equation}
+	\varepsilon=\dfrac{E}{\hbar\omega}
+	\label{1616}
+\end{equation}
+\subsubsection{多项式方法}
+我们可以将\eqref{eigeneq15}写为
+\begin{equation}
+	\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}-(\widehat{x}^2-2\varepsilon)\right] \widehat{\varphi}(\widehat{x})=0
+	\label{1717}
+\end{equation}
+考虑$\widehat{x}$非常大时，$\widehat{\varphi}(\widehat{x})$的行为，为此，考虑以下函数
+\begin{equation}
+	G_\pm(\widehat{x})=e^{\pm\widehat{x}^2/2}
+\end{equation}
+他是下列微分方程的解
+\begin{equation}
+	\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}-(\widehat{x}^2\pm 1)\right] G_\pm(\widehat{x})=0
+	\label{1919}
+\end{equation}
+当$\widehat{x}$趋向无穷大时
+\begin{equation}
+	\widehat{x}^2\pm 1\sim\widehat{x}^2\sim\widehat{x}^2-2\varepsilon
+\end{equation}
+于是方程\eqref{1717}和\eqref{1919}渐近于同一形式。从物理上看，有意义的只是处处有界的函数$\widehat{\varphi}(\widehat{x})$，即行为与$e^{-\widehat{x}^2/2}$相同的那些解，于是我们令
+\begin{equation}
+	\widehat{\varphi}(\widehat{x})=e^{-\widehat{x}^2/2}h(\widehat{x})
+	\label{2121}
+\end{equation}
+将\eqref{2121}带入\eqref{1717}，得到
+\begin{equation}
+	\dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}h(\widehat{x})-2\widehat{x}\dfrac{\mathrm{d}}{\mathrm{d}\widehat{x}}h(\widehat{x})+(2\varepsilon-1)h(\widehat{x})=0
+	\label{2222}
+\end{equation}
+
+$H$的本征函数具有确定的宇称，因为势$V(x)$为一个偶函数，因此\eqref{eigeneq}的解可以在偶函数类或奇函数类中去找。由于$e^{-\widehat{x}^2/2}h(\widehat{x})$是偶函数，因此，我们令
+\begin{equation}
+	h(\widehat{x})=\sum\limits_{m=0}^{\infty}a_{2m}\widehat{x}^{2m+p}
+	\label{ty1}
+\end{equation}
+其中$a_0$不为零。同时
+\begin{equation}
+	\dfrac{\mathrm{d}}{\mathrm{d}\widehat{x}}h(\widehat{x})=\sum\limits_{m=0}^{\infty}a_{2m}(2m+p)a_{2m}\widehat{x}^{2m+p-1}
+	\label{ty2}
+\end{equation}
+\begin{equation}
+	\dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}h(\widehat{x})=\sum\limits_{m=0}^{\infty}a_{2m}(2m+p)(2m+p-1)a_{2m}\widehat{x}^{2m+p-2}
+	\label{ty3}
+\end{equation}
+
+现在将\eqref{ty1}\eqref{ty2}\eqref{ty3}代入\eqref{2222}。对于一般项$\widehat{x}^{2m+p}$：
+\begin{equation}
+	(2m+p+2)(2m+p+1)a_{2m+2}=(4m+2p-2\varepsilon+1)a_{2m}
+\end{equation}
+得到递推公式
+\begin{equation}
+	a_{2m+2}=\dfrac{4m+2p-2\varepsilon+1}{(2m+p+2)(2m+p+1)}a_{2m}
+	\label{2929}
+\end{equation}
+最低次项是$\widehat{x}^{p-2}$，则
+\begin{equation}
+	p(p-1)a_0=0
+\end{equation}
+于是$p=0$[因而$\varphi(x)$是偶函数]或$p=1$[因而$\varphi(x)$是奇函数]。\par 
+这样一来，对于任意$\varepsilon$，我们得到子方程\eqref{2222}的两个线性独立的幂级数解，分别对应于$p=0$和$p=1$。\par 
+如果级数是无穷级数，从\eqref{2929}可以看出
+\begin{equation}
+	\dfrac{a_{2m+2}}{a_{2m}}\overset{m\rightarrow\infty}{\sim}\dfrac{1}{m}
+\end{equation}
+另一方面，函数$e^{\lambda\widehat{x}^2}$的幂级数展开为
+\begin{equation}
+	e^{\lambda\widehat{x}^2}=\sum\limits_{m=0}^{\infty}b_{2m}\widehat{x}^{2m}
+\end{equation}
+其中
+\begin{equation}
+	b_{2m}=\dfrac{\lambda^m}{m!}
+\end{equation}
+我们有
+\begin{equation}
+	\dfrac{b_{2m+2}}{b_{2m}}\overset{m\rightarrow\infty}{\sim}\dfrac{\lambda}{m}
+\end{equation}
+可以看出该级数的渐近行为与$e^{\lambda\widehat{x}^2}$类似，因而当$\widehat{x}\rightarrow\infty$时，$|\widehat{\varphi}(\widehat{x})|$并不是有界的，这样的解没有物理意义，应该舍去。\par 
+现在只剩下一种情况，那就是对于$m$的某一数值$m_0$，\eqref{2929}的分子等于零，这样，我们便有：
+\begin{equation}
+	\begin{cases}
+		a_{2m}\neq0& \text{若$m\leqslant m_0$}\\
+		a_{2m}=0   & \text{若$m\geqslant m_0$}
+	\end{cases}
+\end{equation}
+此时$h(\widehat{x})$的幂级数退化为$2m_0+p$次的多项式。$\widehat{\varphi}(\widehat{x})$在无穷远处的行为决定于指数函数$e^{-\widehat{x}^2/2}$，于是$\widehat{\varphi}(\widehat{x})$在物理上是合理的(平方可积)。\par 
+$m=m_0$时\eqref{2929}的分子为零，这要求下列条件成立
+\begin{equation}
+	2\varepsilon=2(2m_0+p)+1
+	\label{4141}
+\end{equation}
+如果我们令
+\begin{equation}
+	2m_0+p=n
+\end{equation}
+便可以将\eqref{4141}写作
+\begin{equation}
+	\varepsilon=\varepsilon_n=n+\dfrac{1}{2}
+	\label{4343}
+\end{equation}
+式中$n$为零或任意正整数，这便引入了谐振子能量的量子化，因为\eqref{1616}改写为
+\begin{equation}
+	E_n=\left(n+\dfrac{1}{2} \right)\hbar\omega 
+\end{equation}
+
+同时本征函数可以写为：
+\begin{equation}
+	\widehat{\varphi}_n(\widehat{x})=e^{-\widehat{x}^2/2}h_n(\widehat{x})
+\end{equation}
+式中$h_n(\widehat{x})$是一个$n$次多项式。根据\eqref{ty1}，$n$为偶数时，$h_n(\widehat{x})$为偶函数；$n$为奇数时，$h_n(\widehat{x})$为奇函数。\par 
+基态对应于$n=0$，即$m_0=p=0$，这时$h_n(\widehat{x})$是一个常数，于是
+\begin{equation}
+	\widehat{\varphi}_n(\widehat{x})=a_0e^{-\widehat{x}^2/2}
+\end{equation}
+为使$\widehat{\varphi}_n(\widehat{x})$对于$\widehat{x}$归一化，只需取
+\begin{equation}
+	a_0=\pi^{-1/4}
+\end{equation}
+再利用\eqref{1212}，得
+\begin{equation}
+	\varphi_0(x)=\left( \dfrac{\beta^2}{\pi}\right)^{1/4}e^{-\beta^2x^2/2} 
+\end{equation}
+
+对于第一激发态，$E_1=3/2\hbar\omega$对应于$n=1$，即$m_0=0,p=1$，同上可以看出
+\begin{equation}
+	\varphi_1(x)=\left( \dfrac{4\beta^6}{\pi}\right)^{1/4}xe^{-\beta^2x^2/2}
+\end{equation}
+
+对于任意的$n$，$h_n(\widehat{x})$就是方程\eqref{2222}的多项式解，考虑到量子化条件\eqref{4343}，我们可以将方程写作
+\begin{equation}
+	\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}\widehat{x}^2}-2\widehat{x}\dfrac{\mathrm{d}}{\mathrm{d}\widehat{x}}+2n\right] h_n(\widehat{x})=0
+	\label{5252}
+\end{equation}
+厄米多项式的定义式为
+\begin{equation}
+	\left[ \dfrac{\mathrm{d}^2}{\mathrm{d}z^2}-2z\dfrac{\mathrm{d}}{\mathrm{d}z}+2n\right] H_n(z)=0
+\end{equation}
+我们可以看出，\eqref{5252}正是厄米多项式$H_n(\widehat{x})$所满足的微分方程。因此多项式$h_n(\widehat{x})$正比于$H_n(\widehat{x})$，比例因子可以通过$\widehat{\varphi}(\widehat{x})$的归一化来确定。
+\section{升降算符法}
+本章我们采用另一种方法，升降算符法再次处理谐振子的问题。
+\subsection{符号}
+\subsubsection{算符$\widehat{X}$和$\widehat{P}$}
+观察算符$X,P$是有量纲的，我们可以定义如下没有量纲的算符：
+\begin{align}
+	\widehat{X}&=\sqrt{\dfrac{m\omega}{\hbar}}X\nonumber\\
+	\widehat{P}&=\dfrac{1}{\sqrt{m\hbar\omega}}P
+	\label{b1b1}
+\end{align}
+
+利用这两个新算符，可以将对易关系式写作
+\begin{equation}
+	[\widehat{X},\widehat{P}]=\mathrm{i}
+\end{equation}
+而哈密顿算符为
+\begin{equation}
+	H=\hbar\omega\widehat{H}
+\end{equation}
+其中
+\begin{equation}
+	\widehat{H}=\dfrac{1}{2}(\widehat{X}^2+\widehat{P}^2)
+	\label{b4b4}
+\end{equation}
+于是本征方程为
+\begin{equation}
+	\widehat{H}|\varphi_\nu^i\rangle=\varepsilon_\nu|\varphi_\nu^i\rangle
+	\label{b5b5}
+\end{equation}
+指标$\nu$即可属于离散集合也可属于连续集合，辅助指标$i$用来区别属于同一本征值$\varepsilon_\nu$的若干互相正交的本征矢。
+\subsubsection{算符$a,a^\dagger$以及$N$}
+由于$\widehat{X}$和$\widehat{P}$是不可对易的算符，因此$\widehat{X}^2+\widehat{P}^2$并不等于$(\widehat{X}-\mathrm{i}\widehat{P})(\widehat{X}+\mathrm{i}\widehat{P})$。但是，我们只要引入$\widehat{X}-\mathrm{i}\widehat{P}$和与$\widehat{X}+\mathrm{i}\widehat{P}$成正比的算符，就可以使问题大大简化。\par 
+因此，令
+\begin{subequations}
+	\begin{equation}
+		a=\dfrac{1}{\sqrt{2}}(\widehat{X}+\mathrm{i}\widehat{P})
+	\end{equation}
+	\begin{equation}
+		a^\dagger=\dfrac{1}{\sqrt{2}}(\widehat{X}-\mathrm{i}\widehat{P})
+	\end{equation}
+\label{b7b7}
+\end{subequations}
+反过来：
+\begin{subequations}
+	\begin{equation}
+		\widehat{X}=\dfrac{1}{\sqrt{2}}(a^\dagger+a)
+	\end{equation}
+	\begin{equation}
+		\widehat{P}=\dfrac{\mathrm{i}}{\sqrt{2}}(a^\dagger-a)
+	\end{equation}
+\end{subequations}
+$a$与$a^\dagger$由于因子i，不是厄米算符，他们互为伴随算符。\par 
+$a$与$a^\dagger$的对易子为：
+\begin{align}
+	[a,a^\dagger]&=\dfrac{1}{2}[\widehat{X}+\mathrm{i}\widehat{P},\widehat{X}-\mathrm{i}\widehat{P}]\nonumber\\
+				 &=\dfrac{\mathrm{i}}{2}[\widehat{P},\widehat{X}]-\dfrac{\mathrm{i}}{2}[\widehat{X},\widehat{P}]\nonumber\\
+				 &=1
+				 \label{b9b9}
+\end{align}
+
+接下来推导几个重要公式。首先计算$a^\dagger a$
+\begin{align}
+	a^\dagger a&=\dfrac{1}{2}(\widehat{X}-\mathrm{i}\widehat{P})(\widehat{X}+\mathrm{i}\widehat{P})\nonumber\\
+	 &=\dfrac{1}{2}(\widehat{X}^2+\widehat{P}^2+\mathrm{i}\widehat{X}\widehat{P}-\mathrm{i}\widehat{P}\widehat{X})\nonumber\\
+	 &=\dfrac{1}{2}(\widehat{X}^2+\widehat{P}^2-1)
+\end{align}
+与\eqref{b4b4}比较，可以看出
+\begin{equation}
+	\widehat{H}=a^\dagger a+\dfrac{1}{2}=\dfrac{1}{2}(\widehat{X}-\mathrm{i}\widehat{P})(\widehat{X}+\mathrm{i}\widehat{P})+\dfrac{1}{2}
+	\label{b11b11}
+\end{equation}
+同样可以得出
+\begin{equation}
+	\widehat{H}=aa^\dagger-+\dfrac{1}{2}
+\end{equation}
+
+再引入一个算符$N$，定义为
+\begin{equation}
+	N=a^\dagger a
+	\label{b13b13}
+\end{equation}
+这是一个厄米算符，此外，根据\eqref{b11b11}
+\begin{equation}
+	\widehat{H}=N+\dfrac{1}{2}
+\end{equation}
+由此可见，$\widehat{H}$的本征矢都是$N$的本征矢。\par 
+最后再来计算$N$与$a,a^\dagger$的对易子
+\begin{subequations}
+	\begin{equation}
+		[N,a]=[a^\dagger a,a]=a^\dagger[a,a]+[a^\dagger,a]a=-a
+		\label{b17a}
+	\end{equation}
+	\begin{equation}
+		[N,a^\dagger]=[a^\dagger a,a^\dagger]=a^\dagger[a,a^\dagger]+[a^\dagger,a^\dagger]a=a^\dagger
+		\label{b17b}
+	\end{equation}
+\end{subequations}
+
+我们可以把\eqref{b5b5}换成$N$的本征值方程
+\begin{equation}
+	N|\varphi_\nu^i\rangle=\nu|\varphi_\nu^i\rangle
+\end{equation}
+这个方程一旦解出，我们将会知道$N$的本征矢$|\varphi_\nu^i\rangle$也是$H$的对应于本征值$E_\nu=(\nu+1/2)\hbar\omega|\varphi_\nu^i\rangle$的本征矢：
+\begin{equation}
+	H|\varphi_\nu^i\rangle=(\nu+1/2)\hbar\omega|\varphi_\nu^i\rangle
+	\label{b19b19}
+\end{equation}
+\subsection{谱的确定}
+\subsubsection{引理1-$N$的本征值性质}
+算符$N$的本征值$\nu$都是正数或零。\par 
+矢量$a|\varphi_\nu^i\rangle$的模的平方为正数或零，即
+\begin{equation}
+	\|a|\varphi_\nu^i\rangle\|^2=\langle\varphi_\nu^i|a^\dagger a|\varphi_\nu^i\rangle\geqslant0
+\end{equation}
+根据\eqref{b13b13}，便有
+\begin{equation}
+	\langle\varphi_\nu^i|a^\dagger a|\varphi_\nu^i\rangle=\langle\varphi_\nu^i|N|\varphi_\nu^i\rangle=\nu\langle\varphi_\nu^i|\varphi_\nu^i\rangle
+	\label{b21b21}
+\end{equation}
+由于$\langle\varphi_\nu^i|\varphi_\nu^i\rangle$是正的，便知
+\begin{equation}
+	\nu\geqslant0
+\end{equation}
+\subsubsection{引理2-矢量$a|\varphi_\nu^i\rangle$的性质}
+假设$|\varphi_\nu^i\rangle$是$N$的非零本征矢，属于本征值$\nu$。\par
+——若$\nu=0$，则右矢$a|\varphi_{\nu=0}^i\rangle$为零。\par 
+——若$\nu>0$，则右矢$a|\varphi_\nu^i\rangle$是$N$的非零本征矢，属于本征值$\nu-1$。\par 
+(1)根据\eqref{b21b21}，如果$\nu=0$，那么$a|\varphi_\nu^i\rangle$的模的平方等于零，即该矢量为零。因为，如果$\nu=0$是$N$的本征值，那么，属于这个本征值的任何本征矢$|\varphi_0^i\rangle$都满足下式：
+\begin{equation}
+	a|\varphi_0^i\rangle=0
+\end{equation}
+
+考虑一个矢量$|\varphi\rangle$，假设他满足
+\begin{equation}
+	a|\varphi\rangle=0
+	\label{b23b23}
+\end{equation}
+用$a^\dagger$左乘此式的两端有：
+\begin{equation}
+	a^\dagger a|\varphi\rangle=N|\varphi\rangle=0
+\end{equation}
+因而，满足\eqref{b23b23}的每一个矢量都是$N$的属于本征值$\nu=0$的本征矢。\par 
+(2)现在假设$\nu$确定地为正数，根据\eqref{b21b21}，既然模的平方不等于零，那么，$a|\varphi_\nu^i\rangle$也不等于零。\par 
+我们将算符关系式\eqref{b17a}应用于矢量$|\varphi_\nu^i\rangle$：
+\begin{align}
+	[N,a]|\varphi_\nu^i\rangle&=-a|\varphi_\nu^i\rangle\nonumber\\
+	Na|\varphi_\nu^i\rangle&=aN|\varphi_\nu^i\rangle-a|\varphi_\nu^i\rangle\nonumber\\
+	&=a\nu|\varphi_\nu^i\rangle-a|\varphi_\nu^i\rangle\nonumber\\
+	N[a|\varphi_\nu^i\rangle]&=(\nu-1)[a|\varphi_\nu^i\rangle]
+\end{align}
+于是就证明了$a|\varphi_\nu^i\rangle$是$N$的本征矢，属于本征值$\nu-1$。
+\subsubsection{引理3-矢量$a^\dagger|\varphi_\nu^i\rangle$的性质}
+假设$|\varphi_\nu^i\rangle$是$N$的一个非零本征矢，属于本征值$\nu$。\par 
+——$a^\dagger|\varphi_\nu^i\rangle$永远不为零。\par 
+——$a^\dagger|\varphi_\nu^i\rangle$是$N$的本征矢，属于本征值$\nu+1$。\par 
+(1)利用\eqref{b9b9}\eqref{b13b13}很容易计算矢量$a^\dagger|\varphi_\nu^i\rangle$的模的平方
+\begin{align}
+	\|a^\dagger|\varphi_\nu^i\rangle\|^2&=\langle\varphi_\nu^i|aa^\dagger|\varphi_\nu^i\rangle\nonumber\\
+	&=\langle\varphi_\nu^i|(N+1)|\varphi_\nu^i\rangle\nonumber\\
+	&=(\nu+1)\langle\varphi_\nu^i|\varphi_\nu^i\rangle
+\end{align}
+根据引理1，由于$\nu$是正数或零，于是右矢$a^\dagger|\varphi_\nu^i\rangle$的模永远不为零，故该右矢也永远不为零。\par 
+(2)类似引理2的证明，要证明$a^\dagger|\varphi_\nu^i\rangle$是$N$的本征矢，只需利用算符关系式\eqref{b17b}：
+\begin{align}
+	[N,a^\dagger]|\varphi_\nu^i\rangle&=a^\dagger|\varphi_\nu^i\rangle\nonumber\\
+	Na^\dagger|\varphi_\nu^i\rangle=a^\dagger N|\varphi_\nu^i\rangle+a^\dagger&|\varphi_\nu^i\rangle=(\nu+1)a^\dagger|\varphi_\nu^i\rangle
+\end{align}
+\subsubsection{$N$的谱由非负整数构成}
+我们考虑$N$的任意一个本征值$\nu$，以及与他对应的非零本征矢$|\varphi_\nu^i\rangle$。\par 
+假设$\nu$不是整数，我们总能找到这样的整数$n\geqslant0$，使得
+\begin{equation}
+	n<\nu<n+1
+	\label{b30b30}
+\end{equation}
+我们再来考虑下面的矢量序列
+\begin{equation}
+	|\varphi_\nu^i\rangle,a|\varphi_\nu^i\rangle,\cdots,a^n|\varphi_\nu^i\rangle
+\end{equation}
+根据引理2，这个序列中的每一个矢量$a^p|\varphi_\nu^i\rangle(0\leqslant p\leqslant0)$都不为零，而且是$N$的本征矢，属于本征值$\nu-p$，假设根据$|\varphi_\nu^i\rangle$不为零，$a|\varphi_\nu^i\rangle$也不为零，他对应于$N$的本征值$\nu-1,\cdots;a^{p-1}|\varphi_\nu^i\rangle$是$N$的本征矢，属于本征值$\nu-p+1$，这是一个严格的正数，因为$p\leqslant n$而且$\nu >n$，将$a$作用于$a^{p-1}|\varphi_\nu^i\rangle$便可得到$a^p|\varphi_\nu^i\rangle$。\par 
+现在将算符$a$作用于右矢$a^n|\varphi_\nu^i\rangle$。根据\eqref{b30b30}，$\nu-n>0$，故将$a$作用于$a^n|\varphi_\nu^i\rangle$；此外，根据引理2，$a^{n+1}|\varphi_\nu^i\rangle$也是$N$的本征矢，属于本征值$\nu-n-1$，根据\eqref{b30b30}，这是一个严格的负数。因而，如果$\nu$不是整数，我们便可以构成$N$的一个非零本征矢，他所对应的本征值是严格的负数。根据引理1，这是不可能的，因此，我们必须放弃$\nu$不是整数的假设。\par
+如果$n$是正整数或零，而
+\begin{equation}
+	\nu=n
+\end{equation}
+在上述矢量序列中，$a^n|\varphi_\nu^i\rangle$不为零，而且是$N$的本征矢，属于本征值零。于是，根据引理2，我们有
+\begin{equation}
+	a^{n+1}|\varphi_\nu^i\rangle=0
+\end{equation}
+由此可见，若$n$是整数，则将算符$a$迭次作用于$|\varphi_\nu^i\rangle$所得到的矢量序列是有限的；因此，我们永远不可能得到$N$的属于负本征值的非零本征矢。\par 
+归结起来，$\nu$只能是非负整数$n$。\par 
+现在我们便可以用引理3证明：$N$的谱实际上包含全体正整数和零。在上面我们已经构成了$N$的一个本征矢($a^n|\varphi_\nu^i\rangle$)，他属于本征值零；只需将算符$(a^\dagger)^k$作用于这个矢量，便可以得到$N$的属于本征值$k$的本征矢，这里的$k$是一个任意的正整数。\par 
+如果参考\eqref{b19b19}，我们便可以肯定$H$的本征值应为：
+\begin{equation}
+	E_n=\left( n+\dfrac{1}{2}\right)\hbar\omega 
+\end{equation}
+其中$n=0,1,2,\cdots$，由此可见，在量子力学中，谐振子的能量是量子化的，我们得到了与多项式解法相同的结论。\par 
+我们还要对算符$a$和$a^\dagger$进行解释。将算符$a$作用于$H$的属于本征值$E_n=(n+1/2)\hbar\omega$的本征矢$|\varphi_\nu^i\rangle$，我们便可以得到属于本征值$E_{n-1}=(n+1/2)\hbar\omega-\hbar\omega$的一个本征矢，$a^\dagger$的作用同样方式给出能量$E_{n+1}=(n+1/2)\hbar\omega+\hbar\omega$。\par 
+所以我们称$a$为湮没算符，$a^\dagger$为产生算符，他们对$N$的本征矢的作用是使得一个能量子$\hbar\omega$消失或产生。
+\subsubsection{本征值的简并度}
+我们将证明，一维谐振子的能级是非简并的。根据引理2，$N$的与本征值$n=0$相联系的所有本征态，都应满足下列方程
+\begin{equation}
+	a|\varphi^i_0\rangle=0
+	\label{b35b35}
+\end{equation}
+因而，为了考虑能级$E_0$的简并度，只需考虑满足\eqref{b35b35}的线性无关的右矢有多少个即可。\par 
+利用$a$的定义以及关系式\eqref{b1b1}，可将\eqref{b35b35}写成下列形式：
+\begin{equation}
+	\dfrac{1}{\sqrt{2}}\left[ \sqrt{\dfrac{m\omega}{\hbar}}X+\dfrac{\mathrm{i}}{\sqrt{m\hbar\omega}}P\right] |\varphi^i_0\rangle=0
+\end{equation}
+在${|x\rangle}$表象下，此式变成
+\begin{equation}
+	\left( \dfrac{m\omega}{\hbar}x+\dfrac{\mathrm{d}}{\mathrm{d}x}\right) \varphi^i_0(x)=0
+	\label{b37b37}
+\end{equation}
+式中
+\begin{equation}
+	\varphi^i_0(x)=\langle x|\varphi^i_0\rangle
+\end{equation}
+这个一阶微分方程的通解为
+\begin{equation}
+	\varphi^i_0(x)=ce^{-\frac{1}{2}\frac{m\omega}{\hbar}x^2}
+\end{equation}
+因此，方程\eqref{b37b37}的所有解彼此成比例，这就是说，除一个倍乘因子以外，满足\eqref{b35b35}的右矢$|\varphi_0\rangle$只有一个；可见基态能级$E_0=\hbar\omega/2$是非简并的。\par 
+接下来我们用递推的方法证明所有其他能级也都是非简并的。\par 
+为此，只需再证明：如果能级$E_n=(n+1/2)\hbar\omega$是非简并的，则能级$E_{n+1}=(n+1+1/2)\hbar\omega$也是非简并的。因此，我们假设，除一个倍乘因子以外，只有一个右矢$|\varphi_n\rangle$可以满足关系：
+\begin{equation}
+	N|\varphi_n\rangle=n|\varphi_n\rangle
+\end{equation}
+再考虑对应于本征值$n+1$的一个本征矢$|\varphi^i_{n+1}\rangle$
+\begin{equation}
+	N|\varphi^i_{n+1}\rangle=(n+1)|\varphi^i_{n+1}\rangle
+	\label{b41b41}
+\end{equation}
+我们知道，右矢$a|\varphi^i_{n+1}\rangle$不为零，而且是$N$的本征矢，属于本征值$n$。根据假设，这个本征值是非简并的，因而存在一个数$c^i$，使得
+\begin{equation}
+	a|\varphi^i_{n+1}\rangle=c^i|\varphi^i_{n}\rangle
+\end{equation}
+将算符$a^\dagger$作用于此式两端可将$|\varphi^i_{n+1}\rangle$解出来
+\begin{equation}
+	a^\dagger a|\varphi^i_{n+1}\rangle=c^ia^\dagger|\varphi^i_{n}\rangle
+\end{equation}
+考虑到\eqref{b13b13}\eqref{b41b41}，也就是
+\begin{equation}
+	|\varphi^i_{n+1}\rangle=\dfrac{c^i}{n+1}a^\dagger|\varphi_n\rangle
+\end{equation}
+我们已经知道$a^\dagger|\varphi_n\rangle$是$N$的本征矢属于本征值$(n+1)$；我们看到，属于本征值$(n+1)$的所有的右矢$|\varphi^i_{n+1}\rangle$都与$a^\dagger|\varphi_n\rangle$成比例；因而他们也互相成比例，这就是说，本征值$(n+1)$是非简并的。\par 
+\subsection{哈密顿算符的本征态}
+我们承认$N$和$H$都是观察算符，也就是说，他们各自的本征矢的集合都构成一维问题中的一个粒子的态空间$\mathscr{E}_x$的一个基。由于$N$的每一个本征值都是非简并的，故$N$(或$H$)本身就构成$\mathscr{E}_x$空间的一个CSCO。
+\subsubsection{基矢量表为$|\varphi_0\rangle$的函数}
+与$n=0$相联系的矢量$|\varphi_0\rangle$是$\mathscr{E}_x$空间的矢量，他满足关系
+\begin{equation}
+	a|\varphi_0\rangle=0
+\end{equation}
+除倍乘因子以外，这个矢量是确定的，我们假设$|\varphi_0\rangle$已归一化，则他的不确定性只限于一个形如$e^{\mathrm{i}\theta}$的全局相位因子。\par 
+根据引理3，对应于$n=1$的矢量$|\varphi_1\rangle$与矢量$a^\dagger|\varphi_0\rangle$成比例：
+\begin{equation}
+	|\varphi_1\rangle=c_1a^\dagger|\varphi_0\rangle
+	\label{c2c2}
+\end{equation}
+为了确定$c_1$，我们规定$|\varphi_1\rangle$已归一化，并选择$|\varphi_1\rangle$的相位使得$c_1$为正实数。根据\eqref{c2c2}，$|\varphi_1\rangle$的模平方为：
+\begin{align}
+	\langle\varphi_1|\varphi_1\rangle&=|c_1|^2\langle\varphi_0|aa^\dagger|\varphi_0\rangle\nonumber\\
+									 &=|c_1|^2\langle\varphi_0|(a^\dagger a+1)|\varphi_0\rangle
+\end{align}
+由于$|\varphi_0\rangle$是$N=a^\dagger a$的属于本征值零的已归一的本征矢，故得
+\begin{equation}
+	\langle\varphi_1|\varphi_1\rangle=|c_1|^2=1
+\end{equation}
+按照上面相位的规定，应取$c_1=1$，因而
+\begin{equation}
+	|\varphi_1\rangle=a^\dagger|\varphi_0\rangle
+\end{equation}
+
+同样的，我们可以从$|\varphi_1\rangle$出发构建$|\varphi_2\rangle$
+\begin{equation}
+	|\varphi_2\rangle=c_2a^\dagger|\varphi_1\rangle
+\end{equation}
+于是
+\begin{equation}
+	\langle\varphi_2|\varphi_2\rangle=2|c_2|^2=1
+\end{equation}
+便可得
+\begin{equation}
+	|\psi_2\rangle=\dfrac{1}{\sqrt{2}}a^\dagger|\varphi_1\rangle=\dfrac{1}{\sqrt{2}}(a^\dagger)^2|\varphi_0\rangle
+\end{equation}
+
+这种做法很容易推广。如果已知归一化的$|\varphi_{n-1}\rangle$，那么，已归一化的矢量$|\varphi_n\rangle$就可以写作
+\begin{equation}
+	|\varphi_n\rangle=c_na^\dagger|\varphi_{n-1}\rangle
+\end{equation}
+由于
+\begin{align}
+	\langle\varphi_n|\varphi_n\rangle&=|c_n|^2\langle\varphi_{n-1}|aa^\dagger|\varphi_{n-1}\rangle\nonumber\\
+	&=n|c_n|^2=1
+\end{align}
+按上面我们相位的规定，应该取
+\begin{equation}
+	c_n=\dfrac{1}{\sqrt{n}}
+\end{equation}
+相继选择相位，我们可以从$|\varphi_0\rangle$出发得到所有的$|\varphi_n\rangle$
+\begin{align}
+	|\varphi_n\rangle&=\dfrac{1}{\sqrt{n}}a^\dagger|\varphi_{n-1}\rangle=\dfrac{1}{\sqrt{n}}\dfrac{1}{\sqrt{n-1}}(a^\dagger)^2|\varphi_{n-2}\rangle=\cdots\nonumber\\
+	&=\dfrac{1}{\sqrt{n}}\dfrac{1}{\sqrt{n-1}}\cdots\dfrac{1}{\sqrt{2}}(a^\dagger)^n|\varphi_{0}\rangle
+\end{align}
+或写作
+\begin{equation}
+	|\varphi_n\rangle=\dfrac{1}{\sqrt{n!}}(a^\dagger)^n|\varphi_{0}\rangle
+	\label{c13c13}
+\end{equation}
+\subsubsection{正交归一关系式和封闭性关系式}
+$H$既然是厄米算符，那么，与不同的$n$值对应的那些右矢$|\varphi_n\rangle$必是互相正交的；此外，由于每个右矢都已归一化，因此他们满足正交归一关系式：
+\begin{equation}
+	\langle\varphi_{n^\prime}|\varphi_n\rangle=\delta_{nn^\prime}
+\end{equation}
+
+另一方面，$H$又是一个观察算符，所以全体$|\varphi_n\rangle$的集合构成$\mathscr{E}_x$空间中的一个基，这一点由封闭性关系
+\begin{equation}
+	\sum\limits_{n}|\varphi_n\rangle\langle\varphi_n|=1
+\end{equation}
+来表示。
+\subsubsection{各算符的作用}
+观察算符$X$和$P$都是算符$a$和$a^\dagger$的线性组合。因而所有的物理量都可以表示为$a$和$a^\dagger$的函数。他们在表象${|\varphi_n\rangle}$中各基矢量的作用又下列公式表示
+\begin{subequations}
+	\begin{equation}
+		a^\dagger|\varphi_n\rangle=\sqrt{n+1}|\varphi_{n+1}\rangle
+	\end{equation}
+	\begin{equation}
+		a|\varphi_n\rangle=\sqrt{n}|\varphi_{n-1}\rangle
+	\end{equation}
+\end{subequations}
+
+从上式出发，利用\eqref{b1b1}\eqref{b7b7}，我们可以得$X|\varphi_n\rangle$与$P|\varphi_n\rangle$的表示式
+\begin{subequations}
+	\begin{align}
+		X|\varphi_n\rangle&=\sqrt{\dfrac{\hbar}{m\omega}}\dfrac{1}{\sqrt{2}}(a^\dagger+a)|\varphi_n\rangle\nonumber\\
+		&=\sqrt{\dfrac{\hbar}{2m\omega}}[\sqrt{n+1}|\varphi_{n+1}\rangle+\sqrt{n}|\varphi_{n-1}\rangle]
+	\end{align}
+	\begin{align}
+		P|\varphi_n\rangle&=\sqrt{m\hbar\omega}\dfrac{\mathrm{i}}{\sqrt{2}}(a^\dagger-a)|\varphi_n\rangle\nonumber\\
+		&=\mathrm{i}\sqrt{\dfrac{m\hbar\omega}{2}}[\sqrt{n+1}|\varphi_{n+1}\rangle+\sqrt{n}|\varphi_{n-1}\rangle]
+	\end{align}
+\end{subequations}
+从而，算符$a,a^\dagger,X,P$在表象${|\varphi_n\rangle}$中的矩阵元分别为
+\begin{subequations}
+	\begin{equation}
+		\langle\varphi_{n^\prime}|a|\varphi_n\rangle=\sqrt{n}\delta_{n^\prime,n-1}
+	\end{equation}
+	\begin{equation}
+		\langle\varphi_{n^\prime}|a^\dagger|\varphi_n\rangle=\sqrt{n+1}\delta_{n^\prime,n+1}
+	\end{equation}
+	\begin{equation}
+		\langle\varphi_{n^\prime}|X|\varphi_n\rangle=\sqrt{\dfrac{\hbar}{2m\omega}}[\sqrt{n+1}\delta_{n^\prime,n+1}+\sqrt{n}\delta_{n^\prime,n-1}]
+	\end{equation}
+	\begin{equation}
+		\langle\varphi_{n^\prime}|P|\varphi_n\rangle=\mathrm{i}\sqrt{\dfrac{m\hbar\omega}{2}}[\sqrt{n+1}\delta_{n^\prime,n+1}-\sqrt{n}\delta_{n^\prime,n-1}]
+	\end{equation}
+\end{subequations}
+\subsection{与定态相联系的波函数}
+现在采用${|x\rangle}$表象。现在已经求出函数$\varphi_0(x)$，他表示基态$|\varphi_0\rangle$
+\begin{equation}
+	\varphi_0(x)=\langle x|\varphi_0\rangle=\left( \dfrac{m\omega}{\pi\hbar}\right) ^{1/4}e^{-\frac{1}{2}\frac{m\omega}{\hbar}x^2}
+\end{equation}
+指数函数前的常数保证归一化。\par 
+为了求得与谐振子的其他定态相联系的波函数，只需利用\eqref{c13c13}与以下事实：在表象${|x\rangle}$中，$X$表示用$x$去倍乘，而$P$相当于$\dfrac{\hbar}{\mathrm{i}}\dfrac{\mathrm{d}}{\mathrm{d}x}$，于是
+\begin{align}
+	\varphi_n(x)&=\langle x|\varphi_n\rangle=\dfrac{1}{\sqrt{n!}}=\langle x|(a^\dagger)^n|\varphi_n\rangle\nonumber\\
+	&=\dfrac{1}{\sqrt{n!}}\dfrac{1}{\sqrt{2}}\left[ \sqrt{\dfrac{m\omega}{\hbar}}x-\sqrt{\dfrac{\hbar}{m\omega}}\dfrac{\mathrm{d}}{\mathrm{d}x}\right] ^n\varphi_0(x)
+\end{align}
+或写作
+\begin{equation}
+	\varphi_n(x)=\left[ \dfrac{1}{2^nn!}\left( \dfrac{\hbar}{m\omega}\right) ^n\right] ^{1/2}\left( \dfrac{m\omega}{\pi\hbar}\right) ^{1/4}\left[ \dfrac{m\omega}{\hbar}x-\dfrac{\mathrm{d}}{\mathrm{d}x}\right] ^ne^{-\frac{1}{2}\frac{m\omega}{\hbar}x^2}
+\end{equation}
+$\varphi_n(x)$就是函数$e^{-\frac{1}{2}\frac{m\omega}{\hbar}x^2}$与一个次数为$n$，宇称为$(-1)^n$的多项式乘积，这个多项式就是厄米多项式。
+\section{各向同性的三维谐振子}
+\subsection{哈密顿算符}
+考虑一个无自旋粒子，质量为$m$，可在三维空间中运动，受向心力的作用，力的大小正比于粒子至$O$点的距离
+\begin{equation}
+	F=-kr
+\end{equation}
+
+这个力场下的势能
+\begin{equation}
+	V(r)=\dfrac{1}{2}kr^2=\dfrac{1}{2}m\omega^2r^2
+\end{equation}
+式中角频率为
+\begin{equation}
+	\omega=\sqrt{\dfrac{k}{m}}
+\end{equation}
+于是，经典哈密顿函数为
+\begin{equation}
+	\mathscr{H}(r,p)=\dfrac{p^2}{2m}+\dfrac{1}{2}m\omega^2r^2
+\end{equation}
+根据量子化规则，哈密顿算符为i
+\begin{equation}
+	H=\dfrac{P^2}{2m}+\dfrac{1}{2}m\omega^2R^2
+\end{equation}
+由于哈密顿算符与时间无关，我们将解他的本征值方程
+\begin{equation}
+	H|\varphi\rangle=E|\varphi\rangle
+	\label{V6}
+\end{equation}
+这里的$|\varphi\rangle$属于三维空间中运动的粒子的态空间$\mathscr{E}_r$。\par 
+由于V(r)实际上只依赖粒子到原点的距离，所以这个谐振子是各向同性的，势能可以写作
+\begin{equation}
+	V(r)=\dfrac{m}{2}(\omega^2_xx^2+\omega^2_yy^2+\omega^2_zz^2)
+\end{equation}
+\subsection{直角坐标系下变量的分离}
+我们将态空间$\mathscr{E}_r$看做一个张量积
+\begin{equation}
+	\mathscr{E}_r=\mathscr{E}_x\otimes\mathscr{E}_y\otimes\mathscr{E}_z
+\end{equation}
+
+哈密顿算符还可以写作
+\begin{align}
+	H&=\dfrac{1}{2m}(P_x^2+P_y^2+P_z^2)+\dfrac{1}{2}m\omega^2(X^2+Y^2+Z^2)\nonumber\\
+	 &=H_x+H_y+H_z
+	 \label{V9}
+\end{align}
+
+$H_x,H_y,H_z$互相对易，所以，其中的每一个都与他们的总和$H$对易。因此，只要解出本征方程\eqref{V6}，我们可寻求$H$的诸本征矢，他们也是$H_x,H_y,H_z$的本征矢。我们已经知道$\mathscr{E}_x$中$H_x$的本征矢和本征值，以及其他两个空间
+\begin{subequations}
+	\begin{equation}
+		H_x|\varphi_{n_x}\rangle=\left( n_x+\dfrac{1}{2}\right) \hbar\omega|\varphi_{n_x}\rangle\quad|\varphi_{n_x}\rangle\in\mathscr{E}_x
+	\end{equation}
+	\begin{equation}
+		H_y|\varphi_{n_y}\rangle=\left( n_y+\dfrac{1}{2}\right) \hbar\omega|\varphi_{n_y}\rangle\quad|\varphi_{n_y}\rangle\in\mathscr{E}_y
+	\end{equation}
+	\begin{equation}
+		H_z|\varphi_{n_z}\rangle=\left( n_z+\dfrac{1}{2}\right) \hbar\omega|\varphi_{n_z}\rangle\quad|\varphi_{n_z}\rangle\in\mathscr{E}_z
+	\end{equation}
+	\label{V11}
+\end{subequations}
+共同的本征矢为
+\begin{equation}
+	|\varphi_{n_x,n_y,n_z}\rangle=|\varphi_{n_x}\rangle|\varphi_{n_y}\rangle|\varphi_{n_z}\rangle
+	\label{V12}
+\end{equation}
+根据\eqref{V9}\eqref{V11}
+\begin{equation}
+	H|\varphi_{n_x,n_y,n_z}\rangle=\left( n_x+n_y+n_z+\dfrac{3}{2}\right) \hbar\omega|\varphi_{n_x,n_y,n_z}\rangle
+	\label{V13}
+\end{equation}
+这就是说，$H$的本征矢就是$H_x,H_y,H_z$各种的本征矢的张量积，而$H$的本征值就是这三个算符的本征值之和。\par
+根据\eqref{V13}，各向同性的三维谐振子的能级具有下列形式
+\begin{equation}
+	E_n=\left( n+\dfrac{3}{2}\right) \hbar\omega
+\end{equation}
+其中，$n$是0或正整数。\par 
+现在引用三组产生、湮没算符
+\begin{subequations}
+	\begin{equation}
+		a_x=\sqrt{\dfrac{m\omega}{2\hbar}}X+\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_x\quad a^\dagger_x=\sqrt{\dfrac{m\omega}{2\hbar}}X-\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_x
+	\end{equation}
+	\begin{equation}
+		a_y=\sqrt{\dfrac{m\omega}{2\hbar}}Y+\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_y\quad a^\dagger_y=\sqrt{\dfrac{m\omega}{2\hbar}}Y-\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_y
+	\end{equation}
+	\begin{equation}
+		a_z=\sqrt{\dfrac{m\omega}{2\hbar}}Z+\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_z\quad a^\dagger_z=\sqrt{\dfrac{m\omega}{2\hbar}}Z-\dfrac{\mathrm{i}}{\sqrt{2m\hbar\omega}}P_z
+	\end{equation}
+\end{subequations}
+六个算符之间的非零对易子只是
+\begin{equation}
+	[a_x,a_x^\dagger]=[a_y,a_y^\dagger]=[a_z,a_z^\dagger]=1
+\end{equation}
+算符$a_x,a^\dagger_x$对态矢量$|\varphi_{n_x,n_y,n_z}\rangle$的作用为
+\begin{subequations}
+	\begin{align}
+		a_x|\varphi_{n_x,n_y,n_z}\rangle&=(a_x|\varphi_{n_x}\rangle)|\varphi_{n_y}\rangle|\varphi_{n_z}\rangle\nonumber\\
+		&=\sqrt{n_x}|\varphi_{n_x-1}\rangle|\varphi_{n_y}\rangle|\varphi_{n_z}\rangle\nonumber\\
+		&=\sqrt{n_x}|\varphi_{n_x-1,n_y,n_z}\rangle
+	\end{align}
+	\begin{align}
+		a_x^\dagger|\varphi_{n_x,n_y,n_z}\rangle&=(a_x^\dagger|\varphi_{n_x}\rangle)|\varphi_{n_y}\rangle|\varphi_{n_z}\rangle\nonumber\\
+		&=\sqrt{n_x+1}|\varphi_{n_x+1}\rangle|\varphi_{n_y}\rangle|\varphi_{n_z}\rangle\nonumber\\
+		&=\sqrt{n_x+1}|\varphi_{n_x+1,n_y,n_z}\rangle
+	\end{align}
+\end{subequations}
+
+我们又知道
+\begin{equation}
+	|\varphi_{n_x}\rangle=\dfrac{1}{\sqrt{n_x!}}(a^\dagger_x)^{n_x}|\varphi_0\rangle
+\end{equation}
+其中$|\varphi_0\rangle$是$\mathscr{E}_x$中的右矢，他满足条件
+\begin{equation}
+	a_x|\varphi_0\rangle=0
+\end{equation}
+$|\varphi_{n_y}\rangle$和$|\varphi_{n_z}\rangle$分别在空间$\mathscr{E}_y$和$\mathscr{E}_z$中也有类型的关系式，因此根据\eqref{V12}，有
+\begin{equation}
+	|\varphi_{n_x,n_y,n_z}\rangle=\dfrac{1}{\sqrt{n_x!n_y!n_z!}}(a^\dagger_x)^{n_x}(a^\dagger_y)^{n_y}(a^\dagger_z)^{n_z}|\varphi_{0,0,0}\rangle
+\end{equation}
+式中$|\varphi_{0,0,0}\rangle$是三个一维谐振子的基态的张量积，因而，他满足
+\begin{equation}
+	a_x|\varphi_{0,0,0}\rangle=a_y|\varphi_{0,0,0}\rangle=a_z|\varphi_{0,0,0}\rangle
+\end{equation}
+最后
+\begin{equation}
+	\langle r|\varphi_{0,0,0}\rangle=\left( \dfrac{m\omega}{\pi\hbar}\right) ^{3/4}e^{-\frac{m\omega}{2\hbar}(x^2+y^2+z^2)}
+\end{equation}
+\subsection{能级的简并度}
+$H$不能单独构成一个CSCO，因为能级$E_n$是简并的。实际上，假设我们选定了$H$的一个本征值$E_n=(n+3/2)\hbar\omega$；这等于说已将$n$取定为某一个非负整数值。在基${|\varphi_{n_x,n_y,n_z}\rangle}$中，凡是满足条件
+\begin{equation}
+	n_x+n_y+n_z=n
+\end{equation}
+的所有右矢都是$H$的属于本征值$E_n$的本征矢。\par 
+如果我们选定$n_x$，我们便有
+\begin{equation}
+	n_y+n_z=n-n_x
+\end{equation}
+于是，数值${n_y,n_z}$有$(n-n_x+1)$个可能性
+\begin{equation}
+	{n_y,n_z}={0,n-n_x},{1,n-n_x-1},\cdots,{n-n_x,0}
+\end{equation}
+因此，简并度为
+\begin{equation}
+	g_n=\sum\limits_{n_x=0}^{n}(n-n_x+1)
+\end{equation}
+不难算出
+\begin{equation}
+	g_n=(n+1)\sum\limits_{n_x=0}^{n}1-\sum\limits_{n_x=0}^{n}n_x=\dfrac{(n+1)(n+2)}{2}
+\end{equation}
+\section{二维谐振子}
+\subsection{量子化}
+\subsubsection{经典力学的处理}
+如果粒子的势能只依赖于$x$和$y$，这种情况就退化为二维问题。我们假设这个势能可以写作
+\begin{equation}
+	V(x,y)=\dfrac{\mu}{2}\omega^2(x^2+y^2)
+\end{equation}
+式中，$\mu$是粒子的质量，$\omega$是一常数，于是，体系的哈密顿函数为
+\begin{equation}
+	\mathscr{H}=\mathscr{H}_{xy}+\mathscr{H}_z
+\end{equation}
+其中
+\begin{align}
+	\mathscr{H}_{xy}&=\dfrac{1}{2\mu}(p_x^2+p_y^2)+\dfrac{1}{2}\mu\omega^2(x^2+y^2)\nonumber\\
+	\mathscr{H}_z&=\dfrac{1}{2\mu}p_z^2
+\end{align}
+\subsubsection{量子化处理}
+于是
+\begin{equation}
+	H|\varphi\rangle=(H_{xy}+H_z)|\varphi\rangle
+\end{equation}
+其中
+\begin{subequations}
+	\begin{equation}
+		H_{xy}=\dfrac{P_x^2+P_y^2}{2\mu}+\dfrac{1}{2}\mu\omega^2(X^2+Y^2)
+	\end{equation}
+	\begin{equation}
+		H_z=\dfrac{P_z^2}{2\mu}
+	\end{equation}
+\end{subequations}
+
+我们知道，可以选择一个由$H$的形如
+\begin{equation}
+	|\varphi\rangle=|\varphi_{xy}\rangle\otimes|\varphi_z\rangle
+\end{equation}
+的本征矢所构成的基：
+\begin{equation}
+	H_{xy}|\varphi_{xy}\rangle=E_{xy}|\varphi_{xy}\rangle
+	\label{L14}
+\end{equation}
+\begin{equation}
+	H_z|\varphi_z\rangle=E_z|\varphi_z\rangle
+	\label{L15}
+\end{equation}
+因此，总能量为
+\begin{equation}
+	E=E_{xy}+E_z
+\end{equation}
+但是，\eqref{L15}所确定的态就是一维问题中一个自由粒子的定态，此方程可以解出
+\begin{equation}
+	\langle z|\varphi_z\rangle=\dfrac{1}{\sqrt{2\pi\hbar}}e^{\mathrm{i}p_zz/\hbar}
+\end{equation}
+而且
+\begin{equation}
+	E_z=\dfrac{p_z^2}{2\mu}
+\end{equation}
+于是问题归结为求方程\eqref{L14}的解，即求一个二维谐振子的诸定态及对应的能量。
+\subsection{将定态按量子数$n_x$与$n_y$分类}
+可以将算符$H_{xy}$写作
+\begin{equation}
+	H_{xy}=H_x+H_y
+\end{equation}
+这里$H_x,H_y$为
+\begin{align}
+	H_x&=\dfrac{P_x^2}{2\mu}+\dfrac{1}{2}\mu\omega^2X^2\nonumber\\
+	H_y&=\dfrac{P_y^2}{2\mu}+\dfrac{1}{2}\mu\omega^2Y^2
+\end{align}
+因此，可将$H_{xy}$的本征态取
+\begin{equation}
+	|\varphi_{n_x,n_y}\rangle=|\varphi_{n_x}\rangle\otimes|\varphi_{n_y}\rangle
+\end{equation}
+对应能量为
+\begin{align}
+	E_{xy}&=\left( n_x+\dfrac{1}{2}\right) \hbar\omega+\left( n_y+\dfrac{1}{2}\right) \hbar\omega\nonumber\\
+	&=(n_x+n_y+1)\hbar\omega
+	\label{L22}
+\end{align}
+根据一维谐振子的性质，在空间$\mathscr{E}_x$在$E_x$是非简并的；在空间$\mathscr{E}_y$在$E_y$是非简并的。因此，对于每一对数${n_x,n_y}$，在空间$\mathscr{E}_{xy}$中都有一个唯一的矢量$|\varphi_{n_x,n_y}\rangle$与之对应，这就是说，$H_x$和$H_y$构成$\mathscr{E}_{xy}$中的CSCO。\par 
+$a_x$和$a_y$定义为
+\begin{align}
+	a_x&=\dfrac{1}{\sqrt{2}}\left( \beta X+\mathrm{i}\dfrac{P_x}{\beta\hbar}\right) \nonumber\\
+	a_y&=\dfrac{1}{\sqrt{2}}\left( \beta Y+\mathrm{i}\dfrac{P_y}{\beta\hbar}\right) 
+\end{align}
+两式中
+\begin{equation}
+	\beta=\sqrt{\dfrac{\mu\omega}{\hbar}}
+\end{equation}
+因为$a_x$与$a_y$在不同的空间$\mathscr{E}_x$与$\mathscr{E}_y$中起作用，所以$a_x,a_y,a_x^\dagger,a_y^\dagger$这四个算符之间的不为零的对易子只有
+\begin{equation}
+	[a_x,a_x^\dagger]=[a_y,a_y^\dagger]=1
+	\label{L25}
+\end{equation}
+此外，算符$N_x$和$N_y$为
+\begin{align}
+	N_x&=a_x^\dagger a_x\nonumber\\
+	N_y&=a_y^\dagger a_y
+\end{align}
+于是$H_{xy}$可以写成
+\begin{equation}
+	H_{xy}=H_x+H_y=(N_x+N_y+1)\hbar\omega
+\end{equation}
+显然有
+\begin{align}
+	N_x|\varphi_{n_x,n_y}\rangle&=n_x|\varphi_{n_x,n_y}\rangle\nonumber\\
+	N_y|\varphi_{n_x,n_y}\rangle&=n_y|\varphi_{n_x,n_y}\rangle
+\end{align}
+
+基态$|\varphi_{0,0}\rangle$由下式给出
+\begin{equation}
+	|\varphi_{0,0}\rangle=|\varphi_{n_x=0}\rangle\otimes|\varphi_{n_y=0}\rangle
+\end{equation}
+将算符$a_x^\dagger$和$a_y^\dagger$相继作用于$|\varphi_{0,0}\rangle$，便可得态$|\varphi_{n_x,n_y}\rangle$
+\begin{equation}
+	|\varphi_{n_x,n_y}\rangle=\dfrac{1}{\sqrt{n_x!n_y!}}(a_x^\dagger)^{n_x}(a_y^\dagger)^{n_y}|\varphi_{0,0}\rangle
+\end{equation}
+用$\varphi_{n_y}(y)$乘$\varphi_{n_x}(x)$，所得之积就是对应的波函数
+\begin{equation}
+	\varphi_{n_x,n_y}(x,y)=\dfrac{\beta}{\sqrt{\pi(2)^{n_x+n_y}(n_x)!(n_y)!}}e^{-\beta^2(x^2+y^2)/2}H_{n_x}(\beta x)H_{n_y}(\beta y)
+\end{equation}
+
+由\eqref{L22}可以看出，$H_{xy}$的本征值具有如下形式
+\begin{equation}
+	E_{xy}=E_n=(n+1)\hbar\omega
+\end{equation}
+可见在空间$\mathscr{E}_{xy}$中本征值$E_n$是$(n+1)$重简并的，因此$H_{xy}$本身不能单独构成一个CSCO。而${H_{xy},H_x},{H_{xy},H_y},{H_x,H_y}$都是CSCO。
+\subsection{将定态按角动量分类}
+\subsubsection{算符$L_z$的意义及性质}
+在这个问题中，$Ox$轴与$Oy$轴具有优越性，因为势能在围绕$Oz$轴的旋转中是不变的。为了更好的利用这个对称性，我们现在考虑
+\begin{equation}
+	L_z=XP_y-YP_x
+\end{equation}
+用$a_x,a_x^\dagger$表示$X$和$P_x$，同样$P_y$也可以类似表示
+\begin{equation}
+	L_z=\mathrm{i}\hbar(a_xa_y^\dagger-a_x^\dagger a_y)
+	\label{L36}
+\end{equation}
+利用这些算符，可将$H_{xy}$表示为
+\begin{equation}
+	H_{xy}=(a_x^\dagger a_x+a_y^\dagger a_y+1)\hbar\omega
+\end{equation}
+由于
+\begin{align}
+	[a_xa_y^\dagger,a_x^\dagger a_x+a_y^\dagger a_y]&=a_xa_y^\dagger-a_xa_y^\dagger=0\nonumber\\
+	[a_x^\dagger a_y,a_x^\dagger a_x+a_y^\dagger a_y]&=-a_x^\dagger a_y+a_x^\dagger a_y=0
+\end{align}
+从而可以得出
+\begin{equation}
+	[H_{xy},L_z]=0
+\end{equation}
+因此，我们要去寻找由$H_{xy}$和$L_z$的共同本征矢所构成的基。
+\subsubsection{右旋圆量子和左旋圆量子}
+我们引入两个算符$a_d,a_g$
+\begin{align}
+	a_d&=\dfrac{1}{\sqrt{2}}(a_x-\mathrm{i}a_y)\nonumber\\
+	a_g&=\dfrac{1}{\sqrt{2}}(a_x+\mathrm{i}a_y)
+\end{align}
+将算符$a_d$(或$a_g$)作用于矢量$|\varphi_{n_x,n_y}\rangle$所得到的态是$|\varphi_{n_x-1,n_y}\rangle$和$|\varphi_{n_x,n_y-1}\rangle$的一个线性组合，也就是少了一个能量子$\hbar\omega$的定态。实际上，我们将会看到，算符$a_d$(或$a_g$)非常类似于算符$a_x$(或$a_y$)，而且我们可以将$a_d$与$a_g$分别解释为一个“右旋圆量子”与一个“左旋圆量子”的湮没算符。\par 
+$a_d,a_g,a_d^\dagger,a_g^\dagger$四个算符之间的不为零的对易子只有
+\begin{equation}
+	[a_d,a_d^\dagger]=[a_g,a_g^\dagger]=1
+\end{equation}
+这个关系与\eqref{L25}非常相似。此外，由于
+\begin{align}
+	a_d^\dagger a_d&=\dfrac{1}{2}(a_x^\dagger a_x+a_y^\dagger a_y-\mathrm{i}a_x^\dagger a_y+\mathrm{i}a_xa_y^\dagger)\nonumber\\
+	a_g^\dagger a_g&=\dfrac{1}{2}(a_x^\dagger a_x+a_y^\dagger a_y+\mathrm{i}a_x^\dagger a_y-\mathrm{i}a_xa_y^\dagger)
+\end{align}
+从而有
+\begin{equation}
+	H_{xy}=(a_d^\dagger a_d+a_g^\dagger a_g+1)\hbar\omega
+	\label{L43}
+\end{equation}
+此外，考虑\eqref{L36}，还可以看出
+\begin{equation}
+	L_z=\hbar(a_d^\dagger a_d-a_g^\dagger a_g)
+	\label{L44}
+\end{equation}
+如果引入$N_g$与$N_d$
+\begin{align}
+	N_d&=a_d^\dagger a_d\nonumber\\
+	N_g&=a_g^\dagger a_g
+\end{align}
+则\eqref{L43}与\eqref{L44}为
+\begin{align}
+	H_{xy}&=(N_d+N_g+1)\hbar\omega\nonumber\\
+	L_z&=\hbar(N_d-N_g)
+	\label{L4646}
+\end{align}
+\subsubsection{具有完全确定的角动量的定态}
+现在，我们可以使用算符$a_d$和$a_g$来进行类似于上面使用$a_x$和$a_y$所做的推理。这样便可推知：算符$N_d$和$N_g$的谱由全体正整数或零构成；此外，给出了这样的一对整数${n_d.n_g}$便唯一的决定了算符$N_d$和$N_g$的属于这组本征值的共同本征矢
+\begin{equation}
+	|\chi_{n_d,n_g}\rangle=\dfrac{1}{\sqrt{(n_d)!(n_g)!}}(a_d^\dagger)^{n_d}(a_g^\dagger)^{n_g}|\varphi_{0,0}\rangle
+\end{equation}
+因此$N_d$和$N_g$在空间$\mathscr{E}_{xy}$中构成一个CSCO。利用\eqref{L46}，可以看出，矢量$|\xi_{n_d,n_g}\rangle$也是算符$H_{xy}$和$L_z$的本征矢，属于本征值$(n+1)\hbar\omega$和$m\hbar$，这里$n$与$m$由下式给出
+\begin{align}
+	n&=n_d+n_g\nonumber\\
+	m&=n_d-n_g
+\end{align}
+算符$a_d^\dagger$对矢量$|\xi_{n_d,n_g}\rangle$的作用所给出的态多了一个量子，由于$m$的值已经增大了1，我们便须给出这个态增添一个角动量$+\hbar$(这对应于绕$Oz$轴沿逆时针方向的旋转)；同样的，算符$a_g^\dagger$所给出的态也多了一个量子，角动量的改变为$-\hbar$(这对应于顺时针旋转)。\par 
+由于$n_d$和$n_g$都是任意正整数(或零)，于是我们又得到了前一段的结果：$H_{xy}$的本征值的形式为$(n+1)\hbar\omega$，其中$n$为正整数或零；这些本征值的简并度为$(n+1)$，这是因为，$n$的值取定之后，可以有
+\begin{align}
+	n_d&=n\quad\quad n_g=0\nonumber\\
+	n_d=&n-1\quad\quad n_g=1\nonumber\\
+	&\vdots\quad\quad\quad\quad\quad\vdots\nonumber\\
+	n_d&=0\quad\quad n_g=n
+	\label{L49}
+\end{align}
+
+另一方面，我们看到算符$L_z$的本征值的形式为$m\hbar$，这里$m$为正的或负的整数或零。此外，从\eqref{L49}可以推知$m$的哪些值与$n$的一个给定值相联系。例如，对于基态，$n_d=0,n_g=1$，这就决定了$m=\pm 1$或$m=-1$，在一般情况下，对于一个给定的能级$(n+1)\hbar\omega$，$m$的可能值为
+\begin{equation}
+	m=n,n-2,n-4,\cdots,-n+2,-n
+\end{equation}
+由此便可推知，对于$n$和$m$的一对值，对应着一个唯一的矢量
+\begin{equation}
+	|\chi_{n_d=\frac{n+m}{2},n_g=\frac{n-m}{2}}\rangle
+\end{equation}
+因此，$H$和$L_z$在空间$\mathscr{E}_{xy}$中构成一个CSCO。
+\end{document}
